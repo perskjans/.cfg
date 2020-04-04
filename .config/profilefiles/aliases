@@ -31,6 +31,9 @@ alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 
 ## Git related aliases
 alias g='git'
+alias ga='git add'
+alias gd='git diff --color=auto'
+alias gs='git status'
 alias gci='git commit'
 alias gbr='git branch'
 alias gchp='git cherry-pick'
@@ -38,8 +41,6 @@ alias gco='git checkout'
 alias gme='git merge'
 alias gps='git push'
 alias gpu='git pull'
-alias gst='git status'
-alias gdi='git diff --color=auto'
 alias glgf='git log -p --'
 alias glgg="git log --graph --oneline --decorate --all"
 alias glg1="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
@@ -48,8 +49,10 @@ alias glg2="git log --reverse --abbrev-commit --decorate --date=relative --forma
 alias glg3="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 alias glg4="git log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 
-alias cg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias cgst='dg status'
+alias cg='git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
+alias cga='cg add'
+alias cgd='cg diff --color=auto'
+alias cgs='cg status'
 alias cgci='cg commit'
 alias cgbr='cg branch'
 alias cgchp='cg cherry-pick'
@@ -57,8 +60,6 @@ alias cgco='cg checkout'
 alias cgme='cg merge'
 alias cgps='cg push'
 alias cgpu='cg pull'
-alias cgst='cg status'
-alias cgdi='cg diff --color=auto'
 alias cglgf='cg log -p --'
 alias cglgg="cg log --graph --oneline --decorate --all"
 alias cglg1="cg log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
