@@ -17,10 +17,6 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=20000
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -38,7 +34,7 @@ if ! shopt -oq posix; then
 fi
 
 [ -f ~/.config/profilefiles/exports ] &&. ~/.config/profilefiles/exports
-#[ -f ~/.config/profilefiles/platform_specific ] && . ~/.config/profilefiles/platform_specific
+[ -f ~/.config/profilefiles/platform_specific ] && . ~/.config/profilefiles/platform_specific
 [ -f ~/.config/profilefiles/aliases ] &&. ~/.config/profilefiles/aliases
 [ -f ~/.config/profilefiles/setprompt ] && . ~/.config/profilefiles/setprompt
 [ -d ~/.config/workconfig ] && . ~/.config/workconfig/*

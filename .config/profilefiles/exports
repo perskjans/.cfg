@@ -30,7 +30,9 @@ export XDG_MUSIC_DIR="$HOME/mus"
 export XDG_PICTURES_DIR="$HOME/pic"
 export XDG_VIDEOS_DIR="$HOME/vid"
 
-export VIMINIT="source ~/.config/nvim/init.vim"
+mkdir -p "$XDG_DATA_HOME"/vim/{undo,swap,backup}
+export VIMINIT="source $XDG_CONFIG_HOME/nvim/init.vim"
+
 
 [ `which nvim` ] && export EDITOR=nvim || export EDITOR=vim
 [ `which st` ] && export TERMINAL=st || export TERMINAL=xterm
@@ -42,3 +44,43 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export QT_STYLE_OVERRIDE=gtk
 export QT_SELECT=qt5
 
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
+
+export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+mkdir -p "$XDG_CACHE_HOME"/less
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+#export LESSHISTFILE=- # can be used to disable this feature.
+
+export KDEHOME="$XDG_CONFIG_HOME"/kde
+
+export XCOMPOSEFILE="$XDG_CONFIG_HOME"/X11/xcompose
+export XCOMPOSECACHE="$XDG_CACHE_HOME"/X11/xcompose
+
+export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
+
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
+
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
+mkdir -p "$XDG_CONFIG_HOME/pg" && mkdir -p "$XDG_CACHE_HOME/pg"
+export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PSQL_HISTORY="$XDG_CACHE_HOME/pg/psql_history"
+export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
+export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
+
+
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+#export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
+
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history

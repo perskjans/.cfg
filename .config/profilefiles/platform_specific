@@ -4,11 +4,11 @@
 
 DISTRO_TYPE=unknown
 
-#[ -f /etc/arch-release ] && DISTRO_TYPE=arch
-#[ -f /etc/redhat-release ] && DISTRO_TYPE=redhat
-#[ which apt >/dev/null 2>&1 ] && DISTRO_TYPE=debian
-#[ which xbps-install >/dev/null 2>&1 ] && DISTRO_TYPE=void
-#[ which zypper >/dev/null 2>&1 ] && DISTRO_TYPE=suse
+[ -f /etc/arch-release ] && DISTRO_TYPE=arch
+[ -f /etc/redhat-release ] && DISTRO_TYPE=redhat
+[ which apt >/dev/null 2>&1 ] && DISTRO_TYPE=debian
+[ which xbps-install >/dev/null 2>&1 ] && DISTRO_TYPE=void
+[ which zypper >/dev/null 2>&1 ] && DISTRO_TYPE=suse
 
 export DISTRO_TYPE
 
@@ -25,18 +25,16 @@ case $DISTRO_TYPE in
         alias prd='pacman -Qdtq | sudo pacman -Rs - '
     ;;
 
-
     debian)
         alias pm='sudo apt '
         alias pi='sudo apt install '
         alias pr='sudo apt remove '
         alias pc='sudo apt clean '
-        alias pu='sudo apt update && sudo apt upgrade; }
+        alias pu='sudo apt update && sudo apt upgrade '
         alias pq='dpkg -l '
         alias pqr='sudo apt search '
         alias prd='sudo apt autoremove '
     ;;
-
 
     redhat)
         manager=yum
@@ -52,7 +50,6 @@ case $DISTRO_TYPE in
         alias prd='sudo $manager autoremove '
     ;;
 
-
     suse)
         alias pm='sudo zypper '
         alias pi='sudo zypper in '
@@ -64,7 +61,6 @@ case $DISTRO_TYPE in
         alias pqr='sudo zyper se '
         alias prd='sudo zyper rm --clean-deps '
     ;;
-
 
     void)
         alias pm='sudo xbps-install '

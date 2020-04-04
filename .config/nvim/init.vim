@@ -1,17 +1,15 @@
 set fileencodings=utf-8
 set encoding=utf-8
 
-let $rootdir="~"
-let $myvimdir=$rootdir . "/.config/nvim"
-let $MYVIMRC=$rootdir . "/.config/nvim/init.vim"
+let $myvimdir=$HOME . "/.config/nvim"
+let $MYVIMRC=$myvimdir . "/init.vim"
 let $workman=$myvimdir . "/workman.vim"
 
 set runtimepath+=$myvimdir,$myvimdir"/after"
 
-syntax on
 let $mycolorfile=$myvimdir . "/colors/perskjans.vim"
 so $mycolorfile
-
+"
 "=====[ auto reload config if changed ]========
 augroup myvimrc
     au!
@@ -21,23 +19,24 @@ augroup END
 
 nnoremap <silent> <leader>0 :so $MYVIMRC<cr>
 
-" Backups folders {{{
+" Open vimrc
+nnoremap <F3> :e $MYVIMRC<cr>
 
+syntax on
 set backup
 set noswapfile
 
-set dir=~/.cache/vimtmp
-set undodir=~/.cache/vimtmp/undo
-set backupdir=~/.cache/vimtmp/backup
-set viewdir=~/.cache/vimtmp/view
+set undodir=$XDG_DATA_HOME/vim/undo
+set directory=$XDG_DATA_HOME/vim/swap
+set backupdir=$XDG_DATA_HOME/vim/backup
+set viewdir=$XDG_DATA_HOME/vim/view
+set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
 
 set backupskip=/tmp/*,/private/tmp/*"
 
-set viminfo+=n~/.local/share/nvim/viminfo
-
 " Make those folders automatically if they don't already exist.
-if !isdirectory(expand(&dir))
-    call mkdir(expand(&dir), "p")
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
 endif
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
@@ -49,7 +48,6 @@ if !isdirectory(expand(&viewdir))
     call mkdir(expand(&viewdir), "p")
 endif
 
-" }}}
 
 " PLUGIN HANDLING -------------------------------------------------------- {{{
 set nocompatible              " be iMproved, required
@@ -84,6 +82,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 
 Plug 'scrooloose/nerdtree'
+    let g:NERDTreeBookmarks = 0
+    let g:NERDTreeBookmarksFile = '/tmp'
+    let g:NERDTreeDirArrowExpandable = '+'
+    let g:NERDTreeDirArrowCollapsible = '-'
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     let NERDTreeHijackNetrw=1
     let g:NERDTreeDirArrowExpandable = '+'
@@ -512,9 +514,6 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
 
     " Toggle search highlight
     nnoremap <leader>h :set hlsearch! hlsearch?<CR>
-
-    " Open vimrc
-    nnoremap <F3> :e $MYVIMRC<cr>
 
     " Close current buffer
     nnoremap <leader>b :bd<CR>
