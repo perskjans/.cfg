@@ -1,0 +1,79 @@
+###
+### This file is sourced by .profile
+###
+
+DISTRO_TYPE=unknown
+
+#[ -f /etc/arch-release ] && DISTRO_TYPE=arch
+#[ -f /etc/redhat-release ] && DISTRO_TYPE=redhat
+#[ which apt >/dev/null 2>&1 ] && DISTRO_TYPE=debian
+#[ which xbps-install >/dev/null 2>&1 ] && DISTRO_TYPE=void
+#[ which zypper >/dev/null 2>&1 ] && DISTRO_TYPE=suse
+
+export DISTRO_TYPE
+
+## Set up aliases for package manager
+case $DISTRO_TYPE in
+    arch)
+        alias pm='sudo pacman '
+        alias pi='sudo pacman -S '
+        alias pr='sudo pacman -Rs '
+        alias pc='sudo pacman -Scc '
+        alias pu='sudo pacman -Syu '
+        alias pq='pacman -Q '
+        alias pqr='sudo pacman -Ss'
+        alias prd='pacman -Qdtq | sudo pacman -Rs - '
+    ;;
+
+
+    debian)
+        alias pm='sudo apt '
+        alias pi='sudo apt install '
+        alias pr='sudo apt remove '
+        alias pc='sudo apt clean '
+        alias pu='sudo apt update && sudo apt upgrade; }
+        alias pq='dpkg -l '
+        alias pqr='sudo apt search '
+        alias prd='sudo apt autoremove '
+    ;;
+
+
+    redhat)
+        manager=yum
+        [ which dnf >/dev/null 2>&1 ] && manager=dnf
+
+        alias pm='sudo $manager '
+        alias pi='sudo $manager install '
+        alias pr='sudo $manager remove '
+        alias pc='sudo $manager clean all '
+        alias pu='sudo $manager upgrade '
+        alias pq='rpm -qa '
+        alias pqr='sudo $manager search '
+        alias prd='sudo $manager autoremove '
+    ;;
+
+
+    suse)
+        alias pm='sudo zypper '
+        alias pi='sudo zypper in '
+        alias pr='sudo zypper rm --clean-deps '
+        alias pc='sudo zypper clean all '
+        alias pu='sudo zypper up '
+        alias pq='sudo zypper pa | grep "i+" '
+        alias pdu='sudo zyper dup '
+        alias pqr='sudo zyper se '
+        alias prd='sudo zyper rm --clean-deps '
+    ;;
+
+
+    void)
+        alias pm='sudo xbps-install '
+        alias pi='sudo xbps-install -S '
+        alias pr='sudo xbps-remove -R '
+        alias pc='sudo xbps-remove -Oo '
+        alias pu='sudo xbps-install -Su '
+        alias pq='xbps-query '
+        alias pqr='xbps-query -Rsl | grep -i '
+        alias prd='sudo xbps-remove -Oo '
+    ;;
+esac

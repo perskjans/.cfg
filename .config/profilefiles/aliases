@@ -31,8 +31,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 ## Git related aliases
-alias dg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias dgst='dg status'
 alias g='git'
 alias gci='git commit'
 alias gbr='git branch'
@@ -51,10 +49,30 @@ alias glg2="git log --reverse --abbrev-commit --decorate --date=relative --forma
 alias glg3="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 alias glg4="git log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 
+alias cg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cgst='dg status'
+alias cgci='cg commit'
+alias cgbr='cg branch'
+alias cgchp='cg cherry-pick'
+alias cgco='cg checkout'
+alias cgme='cg merge'
+alias cgps='cg push'
+alias cgpu='cg pull'
+alias cgst='cg status'
+alias cgdi='cg diff --color=auto'
+alias cglgf='cg log -p --'
+alias cglgg="cg log --graph --oneline --decorate --all"
+alias cglg1="cg log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
+#alias cglg2="cg log --reverse --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias cglg2="cg log --reverse --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
+alias cglg3="cg log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
+alias cglg4="cg log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
+
+
 alias gcl='~/bin/gitutils clone'
 alias gfa='~/bin/gitutils findall'
 alias gpa='~/bin/gitutils pullall'
 
-function gsetupstream() { git push --set-upstream origin $(git branch | grep '*' | cut -d' ' -f2); }
-function gdeleteupstream() { git push --delete origin $(git branch | grep '*' | cut -d' ' -f2); }
+alias gsetupstream='git push --set-upstream origin $(git branch | grep "\*" | cut -d" " -f2)'
+alias gdeleteupstream='git push --delete origin $(git branch | grep "\*" | cut -d" " -f2)'
 

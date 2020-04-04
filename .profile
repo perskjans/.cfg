@@ -11,20 +11,10 @@
 
 ### END: general
 
-
-
-
-### START: Load OS specific file
-
-    for f in ~/cfg/lib/*_linux_specific; do . $f; done
-
-### END: Load OS specific file
-
-
 ### START: aliases
 
-    [ -f ~/cfg/lib/exports ] &&. ~/cfg/lib/exports
-    [ -f ~/cfg/lib/aliases ] &&. ~/cfg/lib/aliases
+    [ -f ~/.config/profilefiles/exports ] && . ~/.config/profilefiles/exports
+    [ -f ~/.config/profilefiles/aliases ] && . ~/.config/profilefiles/aliases
 
 ### START: aliases
 
@@ -34,17 +24,3 @@
         *bash) [ -f ~/.bashrc ] && . ~/.bashrc ;;
     esac
 ### END: Load rc file for current shell
-
-
-### START: Load work config file
-
-    [ -d ~/.workconfig ] && . ~/.workconfig/*
-
-### END: Load work config file
-
-
-### START: Prompt setup
-
-    . ~/cfg/lib/setprompt
-
-### END: Prompt setup

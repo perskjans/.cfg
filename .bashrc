@@ -37,8 +37,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-for f in ~/cfg/lib/*_linux_specific; do . $f; done
-[ -f ~/cfg/lib/exports ] &&. ~/cfg/lib/exports
-[ -f ~/cfg/lib/aliases ] &&. ~/cfg/lib/aliases
-[ -d ~/.workconfig ] && . ~/.workconfig/*
-[ -f ~/cfg/lib/setprompt ] && . ~/cfg/lib/setprompt
+[ -f ~/.config/profilefiles/exports ] &&. ~/.config/profilefiles/exports
+#[ -f ~/.config/profilefiles/platform_specific ] && . ~/.config/profilefiles/platform_specific
+[ -f ~/.config/profilefiles/aliases ] &&. ~/.config/profilefiles/aliases
+[ -f ~/.config/profilefiles/setprompt ] && . ~/.config/profilefiles/setprompt
+[ -d ~/.config/workconfig ] && . ~/.config/workconfig/*

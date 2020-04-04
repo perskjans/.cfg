@@ -18,6 +18,18 @@ if [ $LANG == '' ]; then
     export LC_ALL="en_US.UTF-8"
 fi
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DESKTOP_DIR="$HOME/dsk"
+export XDG_DOWNLOAD_DIR="$HOME/dwn"
+export XDG_TEMPLATES_DIR="$HOME/tpl"
+export XDG_PUBLICSHARE_DIR="$HOME/pub"
+export XDG_DOCUMENTS_DIR="$HOME/doc"
+export XDG_MUSIC_DIR="$HOME/mus"
+export XDG_PICTURES_DIR="$HOME/pic"
+export XDG_VIDEOS_DIR="$HOME/vid"
+
 export VIMINIT="source ~/.config/nvim/init.vim"
 
 [ `which nvim` ] && export EDITOR=nvim || export EDITOR=vim
