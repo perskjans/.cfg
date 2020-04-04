@@ -60,6 +60,13 @@ set nocompatible              " be iMproved, required
 " alternatively, pass a path where plug should install plugins
 call plug#begin($pluginsdir)
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
+    let g:Hexokinase_highlighters = ['backgroundfull']
+    let g:Hexokinase_refreshEvents = ['InsertLeave']
+    let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'hsl', 'hsla', 'colour_names']
+
 Plug 'yggdroot/indentline'
 
 Plug 'easymotion/vim-easymotion'
@@ -80,19 +87,26 @@ Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_map = '<leader>f'
     let g:ctrlp_cmd = 'CtrlPMixed'
 
+Plug 'xuyuanp/nerdtree-git-plugin'
+
 Plug 'scrooloose/syntastic'
 
 "Plug 'scrooloose/nerdtree'
-    let g:NERDTreeBookmarks = 0
-    let g:NERDTreeBookmarksFile = '/tmp'
-    let g:NERDTreeDirArrowExpandable = '+'
-    let g:NERDTreeDirArrowCollapsible = '-'
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    let NERDTreeHijackNetrw=1
-    let g:NERDTreeDirArrowExpandable = '+'
-    let g:NERDTreeDirArrowCollapsible = '-'
+"    let g:NERDTreeBookmarks = 0
+"    let g:NERDTreeBookmarksFile = '/tmp'
+"    let g:NERDTreeDirArrowExpandable = '+'
+"    let g:NERDTreeDirArrowCollapsible = '-'
+"    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"    let NERDTreeHijackNetrw=1
 
-Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-vinegar'
+    let g:netrw_home="/tmp/vim"
+    let g:netrw_banner=0 " Disable annoying banner
+    let g:netrw_browser_split=4 " Open in prior window
+    let g:netrw_altv=1 " Open splits to the right
+    let g:netrw_liststyle=3 " Tree view
+    "let g:netrw_list_hide=netrw_gitignore#Hide()
+    "let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
 
 Plug 'tpope/vim-fugitive'
 
@@ -106,47 +120,11 @@ Plug 'vim-airline/vim-airline'
     let g:airline#extensions#tabline#enabled = 1
     "let g:airline_powerline_fonts = 1
 
-"Plug 'preservim/nerdcommenter'
-"    " Add spaces after comment delimiters by default
-"    let g:NERDSpaceDelims = 1
-"
-"    " Use compact syntax for prettified multi-line comments
-"    let g:NERDCompactSexyComs = 1
-"
-"    " Align line-wise comment delimiters flush left instead of following code indentation
-"    let g:NERDDefaultAlign = 'left'
-"
-"    " Set a language to use its alternate delimiters by default
-"    let g:NERDAltDelims_java = 1
-"
-"    " Add your own custom formats or override the defaults
-"    let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-"
-"    " Allow commenting and inverting empty lines (useful when commenting a region)
-"    let g:NERDCommentEmptyLines = 1
-"
-"    " Enable trimming of trailing whitespace when uncommenting
-"    let g:NERDTrimTrailingWhitespace = 1
-"
-"    " Enable NERDCommenterToggle to check all selected lines is commented or not
-"    let g:NERDToggleCheckAllLines = 1
-
-"Plug 'vim-airline/vim-airline-themes'
-
 "Plug 'itchyny/lightline.vim'
 
 "Plug 'msanders/snipmate.vim'
 
 "Plug 'rhysd/vim-clang-format'
-
-Plug 'tpope/vim-vinegar'
-    let g:netrw_home="/tmp/vim"
-    let g:netrw_banner=0 " Disable annoying banner
-    let g:netrw_browser_split=4 " Open in prior window
-    let g:netrw_altv=1 " Open splits to the right
-    let g:netrw_liststyle=3 " Tree view
-    "let g:netrw_list_hide=netrw_gitignore#Hide()
-    "let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
 
 "Plug 'andviro/flake8-vim'
     "let g:PyFlakeOnWrite = 1
@@ -187,6 +165,7 @@ filetype plugin on
 set path+=**
 set modelines=0
 
+set termguicolors
 set autoindent
 set showmode
 set showcmd

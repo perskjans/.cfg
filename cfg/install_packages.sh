@@ -82,7 +82,7 @@ packages_to_install()
 #linux-headers catalyst-dkms catalyst-utils lib32-catalyst-utils
 #nvidia lib32-nvidia-utils
 
-for f in ~/cfg/lib/*_linux_specific; do . $f; done
+[ -f ~/.config/profilefiles/platform_specific ] && . ~/.config/profilefiles/platform_specific
 
 pi $(packages_to_install)
 

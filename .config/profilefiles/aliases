@@ -14,10 +14,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias startx='startx "$XDG_CONFIG_HOME/X11/xinitrc"'
+alias startx='startx $XDG_CONFIG_HOME/X11/xinitrc'
 
-alias profilereload=". ~/.profile"
-alias tx='~/bin/runtmux'
+alias pl='. $HOME/.profile'
+alias tx='~$HOME/bin/runtmux'
 
 alias psa='ps aux | grep'
 alias jb='jobs'
@@ -25,31 +25,31 @@ alias ll='ls -alhF'
 alias la='ls -Ah'
 alias l='ls -hCF'
 
-alias xresources='. ~/.xinitrc'
+alias xresources='. $XDG_CONFIG_HOME/X11/xprofile'
 
-alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
+alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 
 ## Git related aliases
 alias g='git'
-alias ga='git add'
-alias gd='git diff --color=auto'
-alias gs='git status'
-alias gci='git commit'
-alias gbr='git branch'
-alias gchp='git cherry-pick'
-alias gco='git checkout'
-alias gme='git merge'
-alias gps='git push'
-alias gpu='git pull'
-alias glgf='git log -p --'
-alias glgg="git log --graph --oneline --decorate --all"
-alias glg1="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
-#alias glg2="git log --reverse --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias glg2="git log --reverse --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
-alias glg3="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
-alias glg4="git log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
+alias ga='g add'
+alias gd='g diff --color=auto'
+alias gs='g status'
+alias gci='g commit'
+alias gbr='g branch'
+alias gchp='g cherry-pick'
+alias gco='g checkout'
+alias gme='g merge'
+alias gps='g push'
+alias gpu='g pull'
+alias glgf='g log -p --'
+alias glgg="g log --graph --oneline --decorate --all"
+alias glg1="g log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
+#alias glg2="g log --reverse --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias glg2="g log --reverse --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
+alias glg3="g log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
+alias glg4="g log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 
-alias cg='git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
+alias cg='g --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
 alias cga='cg add'
 alias cgd='cg diff --color=auto'
 alias cgs='cg status'
@@ -69,10 +69,10 @@ alias cglg3="cg log --graph --abbrev-commit --decorate --format=format:'%C(bold 
 alias cglg4="cg log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 
 
-alias gcl='~/bin/gitutils clone'
-alias gfa='~/bin/gitutils findall'
-alias gpa='~/bin/gitutils pullall'
+alias gcl='$HOME/bin/gitutils clone'
+alias gfa='$HOME/bin/gitutils findall'
+alias gpa='$HOME/bin/gitutils pullall'
 
-alias gsetupstream='git push --set-upstream origin $(git branch | grep "\*" | cut -d" " -f2)'
-alias gdeleteupstream='git push --delete origin $(git branch | grep "\*" | cut -d" " -f2)'
+alias gsetupstream='g push --set-upstream origin $(g branch | grep "\*" | cut -d" " -f2)'
+alias gdeleteupstream='g push --delete origin $(g branch | grep "\*" | cut -d" " -f2)'
 

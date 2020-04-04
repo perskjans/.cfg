@@ -13,14 +13,14 @@
 
 ### START: aliases
 
-    [ -f ~/.config/profilefiles/exports ] && . ~/.config/profilefiles/exports
-    [ -f ~/.config/profilefiles/aliases ] && . ~/.config/profilefiles/aliases
+#    [ -f ~/.config/profilefiles/exports ] && . ~/.config/profilefiles/exports
+#    [ -f ~/.config/profilefiles/aliases ] && . ~/.config/profilefiles/aliases
 
 ### START: aliases
 
 
 ### START: Load rc file for current shell
     case $SHELL in
-        *bash) [ -f ~/.bashrc ] && . ~/.bashrc ;;
+        *bash) [ -f $HOME/.bashrc ] && . $HOME/.bashrc ;;
     esac
 ### END: Load rc file for current shell
