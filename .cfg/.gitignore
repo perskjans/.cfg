@@ -3,4 +3,5 @@
 .*
 .*/
 *.*
+!.config/nvim/*
 *vim/plugins/*
