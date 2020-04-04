@@ -4,6 +4,7 @@ set encoding=utf-8
 let $myvimdir=$HOME . "/.config/nvim"
 let $MYVIMRC=$myvimdir . "/init.vim"
 let $workman=$myvimdir . "/workman.vim"
+let $pluginsdir=$XDG_DATA_HOME . "/vim/plugins"
 
 set runtimepath+=$myvimdir,$myvimdir"/after"
 
@@ -57,7 +58,7 @@ set nocompatible              " be iMproved, required
 
 " Call plug#begin()
 " alternatively, pass a path where plug should install plugins
-call plug#begin($myvimdir . '/plugins')
+call plug#begin($pluginsdir)
 
 Plug 'yggdroot/indentline'
 
@@ -81,7 +82,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'scrooloose/syntastic'
 
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
     let g:NERDTreeBookmarks = 0
     let g:NERDTreeBookmarksFile = '/tmp'
     let g:NERDTreeDirArrowExpandable = '+'
@@ -138,13 +139,14 @@ Plug 'vim-airline/vim-airline'
 
 "Plug 'rhysd/vim-clang-format'
 
-"Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
+    let g:netrw_home="/tmp/vim"
     let g:netrw_banner=0 " Disable annoying banner
     let g:netrw_browser_split=4 " Open in prior window
     let g:netrw_altv=1 " Open splits to the right
     let g:netrw_liststyle=3 " Tree view
-"let g:netrw_list_hide=netrw_gitignore#Hide()
-"let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
+    "let g:netrw_list_hide=netrw_gitignore#Hide()
+    "let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
 
 "Plug 'andviro/flake8-vim'
     "let g:PyFlakeOnWrite = 1
