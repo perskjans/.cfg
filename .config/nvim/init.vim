@@ -8,9 +8,8 @@ let $pluginsdir=$XDG_DATA_HOME . "/vim/plugins"
 
 set runtimepath+=$myvimdir,$myvimdir"/after"
 
-let $mycolorfile=$myvimdir . "/colors/perskjans.vim"
-so $mycolorfile
-"
+"let $mycolorfile=$myvimdir . "/colors/perskjans.vim"
+
 "=====[ auto reload config if changed ]========
 augroup myvimrc
     au!
@@ -304,25 +303,24 @@ iab  previosu  previous
 set wildmenu
 "set wildmode=list:longest
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip         " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe      " Windows
-set wildignore+=.hg,.git,.svn,*.fossil           " Version control
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip           " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.bak  " Windows
+set wildignore+=.hg,.git,.svn,*.fossil             " Version control
+set wildignore+=*.aux,*.out,*.toc                  " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg     " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest   " compiled object files
+set wildignore+=*.spl                              " compiled spelling word lists
+set wildignore+=*.DS_Store                         " OSX bullshit
 
-set wildignore+=*.luac                           " Lua byte code
+set wildignore+=*.luac                             " Lua byte code
 
-set wildignore+=migrations                       " Django migrations
-set wildignore+=*.pyc                            " Python byte code
+set wildignore+=migrations                         " Django migrations
+set wildignore+=*.pyc                              " Python byte code
 
-set wildignore+=*.orig                           " Merge resolution files
-set wildignore+=bin                              " files in bin folder
-set wildignore+=nbproject                        " Netbeans project folder
-set wildignore+=external                         " folders for external dependecies
+set wildignore+=*.orig                             " Merge resolution files
+set wildignore+=bin                                " files in bin folder
+set wildignore+=nbproject                          " Netbeans project folder
+set wildignore+=external                           " folders for external dependecies
 " }}}
 
 " END ---------------------------------------------------------------------- }}}
@@ -364,7 +362,7 @@ set list
 set showbreak=↪
 set listchars=tab:▸-▸,extends:❯,precedes:❮,trail:«,nbsp:»
 ",eol:¬,
-	
+
 "set showbreak=.^.
 "set listchars=tab:>~,extends:>,precedes:<,trail:^,nbsp:~
 ",eol:
@@ -441,7 +439,7 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
 
 " END ---------------------------------------------------------------------- }}}}}}
 
-    " KEY MAPPING -------------------------------------------------------------- {{{
+" KEY MAPPING -------------------------------------------------------------- {{{
     " Leader
     "let mapleader = "-"
     "let maplocalleader = "_"
@@ -643,8 +641,19 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
     " This should preserve your last yank/delete as well.
     nnoremap zl x$p
 
+    " Close all netrw buffers
+    function! s:close_explorer_buffers()
+        for i in range(1, bufnr('$'))
+            if getbufvar(i, '&filetype') == "netrw"
+                silent exe 'bdelete! ' . i
+            endif
+        endfor
+    endfunction
 
-    " END ---------------------------------------------------------------------- }}}
+    nnoremap <C-e><C-x> :call <sid>close_explorer_buffers()<cr>
+
+
+" END ---------------------------------------------------------------------- }}}
 
 " Folding ------------------------------------------------------------------ {{{
 
@@ -967,3 +976,5 @@ autocmd BufWritePost */herbstluftwm/* silent !herbstclient reload
 " END ---------------------------------------------------------------------- }}}
 
 so $workman
+"so $mycolorfile
+color perskjans
