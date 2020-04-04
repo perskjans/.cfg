@@ -1,0 +1,20 @@
+###
+### This file is sourced by .profile
+###
+### Content is stuff specific for Void Linux
+###
+
+which xbps-install >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    export DISTRO_TYPE=void
+
+    ## Set up functions for package manager
+    pm() { sudo xbps-install $*; }
+    pi() { sudo xbps-install -S $*; }
+    pr() { sudo xbps-remove -R $*; }
+    pc() { sudo xbps-remove -Oo $*; }
+    pu() { sudo xbps-install -Su $*; }
+    pq() { xbps-query $*; }
+    pqr() { xbps-query -Rsl | grep -i $*; }
+    prd() { sudo xbps-remove -Oo $*; }
+fi
