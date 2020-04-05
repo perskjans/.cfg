@@ -1,0 +1,11 @@
+
+super + Return
+    ${TERMINAL}
+
+super + b
+    chromium
+
+super + d
+    dmenu_run
+super + t
+    toggletray

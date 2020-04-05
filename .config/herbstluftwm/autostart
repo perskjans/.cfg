@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # this is a simple config for herbstluftwm
 
-source $HOME/cfg/lib/autostart_apps
+source $HOME/.config/herbstluftwm/colors
 
 hc() {
     herbstclient "$@"
@@ -20,14 +20,14 @@ hc keyunbind --all
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 
-hc keybind $Mod-t spawn $HOME/bin/toggletray
-hc keybind $Mod-b spawn $BROWSER
-hc keybind $Mod-d spawn dmenu_run
+#hc keybind $Mod-t spawn $HOME/bin/toggletray
+#hc keybind $Mod-b spawn $BROWSER
+#hc keybind $Mod-d spawn dmenu_run
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
-hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
+#hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
 
 # basic movement
 # focusing clients
@@ -175,3 +175,5 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     "$panel" $monitor &
 done
+
+$HOME/bin/autostart_apps &

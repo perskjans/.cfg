@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ~/cfg/lib/ansicolor
+. ~/.config/profilefiles/ansicolor
 reposfile=~/.cache/gitrepos.dat
 
 repostatus()

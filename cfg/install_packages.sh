@@ -11,6 +11,7 @@ packages_to_install()
         echo networkmanager
         echo noto-fonts
         echo noto-fonts-emoji
+        echo papirus-icon-theme
         echo trayer
         echo ttf-dejavu
         echo ttf-inconsolata
@@ -60,8 +61,8 @@ packages_to_install()
     echo gcc
     echo herbstluftwm
     echo libnotify
-    echo lightdm
-    echo lightdm-gtk-greeter
+    #echo lightdm
+    #echo lightdm-gtk-greeter
     echo make
     echo neovim
     echo patch

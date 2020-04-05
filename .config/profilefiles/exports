@@ -36,8 +36,8 @@ mkdir -p $XDG_DATA_HOME/vim/{undo,swap,backup}
 export VIMINIT="source $XDG_CONFIG_HOME/nvim/init.vim"
 
 
-[ `which nvim` ] && export EDITOR=nvim || export EDITOR=vim
-[ `which st` ] && export TERMINAL=st || export TERMINAL=xterm
+[ `command -v nvim` ] && export EDITOR=nvim || export EDITOR=vim
+[ `command -v st` ] && export TERMINAL=st || export TERMINAL=xterm
 export BROWSER=chromium
 
 # colored GCC warnings and errors

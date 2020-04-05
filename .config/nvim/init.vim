@@ -5,6 +5,7 @@ let $myvimdir=$HOME . "/.config/nvim"
 let $MYVIMRC=$myvimdir . "/init.vim"
 let $workman=$myvimdir . "/workman.vim"
 let $pluginsdir=$XDG_DATA_HOME . "/vim/plugins"
+let $tmpdir=$XDG_DATA_HOME . "/vim/tmp"
 
 set runtimepath+=$myvimdir,$myvimdir"/after"
 
@@ -82,24 +83,25 @@ Plug 'frazrepo/vim-rainbow'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_map = '<leader>f'
-    let g:ctrlp_cmd = 'CtrlPMixed'
+    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_clear_cache_on_exit = 0
+    let g:ctrlp_working_path_mode = 'c'
 
 Plug 'xuyuanp/nerdtree-git-plugin'
 
 Plug 'scrooloose/syntastic'
 
-"Plug 'scrooloose/nerdtree'
-"    let g:NERDTreeBookmarks = 0
-"    let g:NERDTreeBookmarksFile = '/tmp'
-"    let g:NERDTreeDirArrowExpandable = '+'
-"    let g:NERDTreeDirArrowCollapsible = '-'
-"    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"    let NERDTreeHijackNetrw=1
+Plug 'scrooloose/nerdtree'
+    let g:NERDTreeBookmarksFile = $tmpdir . '/NERDTreeBookmarks'
+    let g:NERDTreeDirArrowExpandable = '+'
+    let g:NERDTreeDirArrowCollapsible = '-'
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    let NERDTreeHijackNetrw=0
 
 Plug 'tpope/vim-vinegar'
-    let g:netrw_home="/tmp/vim"
+    let g:netrw_home=$tmpdir
     let g:netrw_banner=0 " Disable annoying banner
     let g:netrw_browser_split=4 " Open in prior window
     let g:netrw_altv=1 " Open splits to the right
@@ -301,7 +303,7 @@ iab  previosu  previous
 " Wildmenu completion {{{
 
 set wildmenu
-"set wildmode=list:longest
+set wildmode=list:longest
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip           " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.bak  " Windows
@@ -690,6 +692,7 @@ augroup ft_asm
 augroup END
 
 " }}}
+
 " C {{{
 
 augroup ft_c
@@ -698,6 +701,7 @@ augroup ft_c
 augroup END
 
 " }}}
+
 " CSS and LessCSS {{{
 
 augroup ft_css
@@ -737,17 +741,7 @@ augroup ft_css
 augroup END
 
 " }}}
-" Fish {{{
 
-augroup ft_fish
-    au!
-
-    au BufNewFile,BufRead *.fish setlocal filetype=fish
-
-    au FileType fish setlocal foldmethod=marker foldmarker={{{,}}}
-augroup END
-
-" }}}
 " Java {{{
 
 augroup ft_java
@@ -823,119 +817,7 @@ augroup ft_markdown
 augroup END
 
 " }}}
-" Python {{{
 
-function! OpenPythonRepl() "{{{
-    "fucking kill me
-    NeoRepl fish
-endfunction "}}}
-function! SendPythonLine() "{{{
-    let view = winsaveview()
-
-    execute "normal! ^vg_\<esc>"
-    call NeoReplSendSelection()
-
-    call winrestview(view)
-endfunction "}}}
-function! SendPythonParagraph() "{{{
-    let view = winsaveview()
-
-    execute "normal! ^vip\<esc>"
-    call NeoReplSendSelection()
-
-    call winrestview(view)
-endfunction "}}}
-function! SendPythonTopLevelHunk() "{{{
-    let view = winsaveview()
-
-    " TODO: This is horseshit, ugh
-
-    " If we're on the first char of the form, calling PareditFindDefunBck will
-    " move us to the previous form, which we don't want.  So instead we'll just
-    " always move a char to the right.
-    silent! normal! l
-
-    call PareditFindDefunBck()
-    execute "normal! vab\<esc>"
-    call NeoReplSendSelection()
-
-    call winrestview(view)
-endfunction "}}}
-function! SendPythonSelection() "{{{
-    let view = winsaveview()
-    let old_z = @z
-
-    normal! gv"zy
-    call NeoReplSendRaw("%cpaste\n" . @z . "\n--\n")
-
-    let @z = old_z
-    call winrestview(view)
-endfunction "}}}
-function! SendPythonBuffer() "{{{
-    let view = winsaveview()
-
-    execute "normal! ggVG\<esc>"
-
-    normal! gv"zy
-    call NeoReplSendRaw("%cpaste\n" . @z . "\n--\n")
-
-    call winrestview(view)
-endfunction "}}}
-
-augroup ft_python
-    au!
-
-    au FileType python setlocal define=^\s*\\(def\\\\|class\\)
-
-    " Jesus tapdancing Christ, built-in Python syntax, you couldn't let me
-    " override this in a normal way, could you?
-    au FileType python if exists("python_space_error_highlight") | unlet python_space_error_highlight | endif
-
-    " Strip REPL-session marks from just-pasted text
-    au FileType python nnoremap <localleader>s mz`[v`]:v/\v^(\>\>\>\|[.][.][.])/d<cr>gv:s/\v^(\>\>\> \|[.][.][.] \|[.][.][.]$)//<cr>:noh<cr>`z
-
-    " Set up some basic neorepl mappings.
-    "
-    " key  desc                   mnemonic
-    " \o - connect neorepl        [o]pen repl
-    " \l - send current line      [l]ine
-    " \p - send current paragraph [p]aragraph
-    " \e - send top-level hunk    [e]val
-    " \e - send selected hunk     [e]val
-    " \r - send entire file       [r]eload file
-    " \c - send ctrl-l            [c]lear
-
-    au FileType python nnoremap <buffer> <silent> <localleader>o :call OpenPythonRepl()<cr>
-
-    " Send the current line to the REPL
-    au FileType python nnoremap <buffer> <silent> <localleader>l :call SendPythonLine()<cr>
-
-    " Send the current paragraph to the REPL
-    au FileType python nnoremap <buffer> <silent> <localleader>p :call SendPythonParagraph()<cr>
-
-    " " Send the current top-level hunk to the REPL
-    " au FileType python nnoremap <buffer> <silent> <localleader>e :call SendPythonTopLevelHunk()<cr>
-
-    " Send the current selection to the REPL
-    au FileType python vnoremap <buffer> <silent> <localleader>e :<c-u>call SendPythonSelection()<cr>
-
-    " Send the entire buffer to the REPL ([r]eload)
-    au FileType python nnoremap <buffer> <silent> <localleader>r :call SendPythonBuffer()<cr>
-
-    " Clear the REPL
-    au FileType python nnoremap <buffer> <silent> <localleader>c :call NeoReplSendRaw("")<cr>
-augroup END
-
-" }}}
-" Ruby {{{
-
-augroup ft_ruby
-    au!
-    au Filetype ruby setlocal foldmethod=syntax
-    au BufRead,BufNewFile Capfile setlocal filetype=ruby
-augroup END
-
-" }}}
 " Standard In {{{
 
 augroup ft_stdin
@@ -944,6 +826,7 @@ augroup ft_stdin
     " Treat buffers from stdin (e.g.: echo foo | vim -) as scratch.
 
 " }}}
+
 " Vim {{{
 
 augroup ft_vim
@@ -955,25 +838,16 @@ augroup ft_vim
 augroup END
 
 " }}}
-" XML {{{
 
-augroup ft_xml
-    au!
-
-    au FileType xml setlocal foldmethod=manual
-
-    " Use <localleader>f to fold the current tag.
-    au FileType xml nnoremap <buffer> <localleader>f Vatzf
-
-    " Indent tag
-    au FileType xml nnoremap <buffer> <localleader>= Vat=
-augroup END
-
-" }}}
-
-autocmd BufWritePost */herbstluftwm/* silent !herbstclient reload
 
 " END ---------------------------------------------------------------------- }}}
+
+" Reload Herbstluwftwm when file in herbstluftwm dir is saved
+    autocmd BufWritePost */herbstluftwm/* silent !herbstclient reload
+" Restart sxhkd when sxhkdmrc is saved.
+    autocmd BufWritePost */sxhkdrc silent !killall sxhkd; setsid sxhkd &
+
+
 
 so $workman
 "so $mycolorfile
