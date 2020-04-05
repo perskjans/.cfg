@@ -49,16 +49,13 @@ if !isdirectory(expand(&viewdir))
     call mkdir(expand(&viewdir), "p")
 endif
 
-
-" PLUGIN HANDLING -------------------------------------------------------- {{{
-set nocompatible              " be iMproved, required
-
-
-" set the runtime path to include Vundle and initialize
+" path to include Vundle and initialize
 
 " Call plug#begin()
 " alternatively, pass a path where plug should install plugins
 call plug#begin($pluginsdir)
+
+Plug 'embear/vim-foldsearch'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -83,8 +80,8 @@ Plug 'frazrepo/vim-rainbow'
 
 Plug 'airblade/vim-gitgutter'
 
-"Plug 'ctrlpvim/ctrlp.vim'
-    let g:ctrlp_map = '<leader>f'
+Plug 'ctrlpvim/ctrlp.vim'
+    "let g:ctrlp_map = '<leader>f'
     let g:ctrlp_cmd = 'CtrlP'
     let g:ctrlp_clear_cache_on_exit = 0
     let g:ctrlp_working_path_mode = 'c'
@@ -127,10 +124,10 @@ Plug 'vim-airline/vim-airline'
 
 "Plug 'rhysd/vim-clang-format'
 
-"Plug 'andviro/flake8-vim'
-    "let g:PyFlakeOnWrite = 1
-    "let g:PyFlakeCheckers = 'pep8'
-    "let g:PyFlakeAggressive = 0
+Plug 'andviro/flake8-vim'
+    let g:PyFlakeOnWrite = 1
+    let g:PyFlakeCheckers = 'pep8'
+    let g:PyFlakeAggressive = 0
 
 "Plug 'klen/python-mode'
     "map <Leader>g :call RopeGotoDefinition()<CR>
@@ -155,6 +152,7 @@ call plug#end()            " required
 
 
 " END ---------------------------------------------------------------------- }}}
+
 
 " BASIC OPTIONS------------------------------------------------------------- {{{
 
@@ -253,7 +251,6 @@ set backspace=indent,eol,start      "BS past autoindents, line boundaries,
 
 set fileformats=unix,mac,dos        "Handle Mac and DOS line-endings but prefer Unix endings
 
-set wildmode=list:longest,full      "Show list of completions and complete as much as possible, then iterate full completions
 
 set infercase                       "Adjust completions to match case
 
@@ -293,9 +290,6 @@ iab    retrun  return
 iab     pritn  print
 iab       teh  the
 iab      liek  like
-iab  liekwise  likewise
-iab      Pelr  Perl
-iab      pelr  perl
 iab        ;t  't
 iab      moer  more
 iab  previosu  previous
@@ -303,7 +297,7 @@ iab  previosu  previous
 " Wildmenu completion {{{
 
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full      "Show list of completions and complete as much as possible, then iterate full completions
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip           " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.bak  " Windows
@@ -412,10 +406,6 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
     nnoremap <C-k> kzz
     nnoremap <A-n> }zz
     nnoremap <A-e> {zz
-    nnoremap <C-e> <C-p>
-    nnoremap <C-p> <C-e>
-    vnoremap <C-e> <C-p>
-    vnoremap <C-p> <C-e>
 
     " Splits
     nnoremap <leader>v <C-w>v
@@ -446,25 +436,33 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
     "let mapleader = "-"
     "let maplocalleader = "_"
 
+
+    inoremap ï <C-n>
+    inoremap œ <C-p>
+
     " === Movement ===
-    nnoremap <C-j> jzz
-    nnoremap <C-k> kzz
-    nnoremap <A-n> }zz
-    nnoremap <A-e> {zz
-    nnoremap <C-e> <C-p>
-    nnoremap <C-p> <C-e>
-    vnoremap <C-e> <C-p>
-    vnoremap <C-p> <C-e>
+    nnoremap <C-j> <C-y> " Scroll down
+    nnoremap <C-k> <C-e> " Scroll up
+
+    nnoremap í <C-u> " Half page up
+    nnoremap ç <C-d> " Half page down
+    nnoremap Í <C-b> " Full page up
+    nnoremap Ç <C-f> " Full page down
+
+    nnoremap ï jzz
+    nnoremap œ kzz
+    nnoremap Ï }zz
+    nnoremap Œ {zz
 
     " Splits
     nnoremap <leader>v <C-w>v
     nnoremap <leader>vv <C-w>s
 
-    " Move between splits
-    nnoremap <UP>  <C-W>k
-    nnoremap <DOWN>  <C-W>j
-    nnoremap <LEFT>  <C-W>h
-    nnoremap <RIGHT>  <C-W>l
+    " move between splits
+    nnoremap gk  <C-W>k
+    nnoremap gj  <C-W>j
+    nnoremap gh  <C-W>h
+    nnoremap gl  <C-W>l
 
     " Move between open buffers
     nnoremap <C-l> :bn<CR>
@@ -473,11 +471,6 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
 
     " === Misc ===
 
-    "noremap ; :
-    "nnoremap : ,
-    "nnoremap , ;
-    "nnoremap ' "
-    "nnoremap " '
     inoremap tn <Esc>
     nnoremap <leader>t :NERDTreeToggle<cr>
 
@@ -846,7 +839,6 @@ augroup END
     autocmd BufWritePost */herbstluftwm/* silent !herbstclient reload
 " Restart sxhkd when sxhkdmrc is saved.
     autocmd BufWritePost */sxhkdrc silent !killall sxhkd; setsid sxhkd &
-
 
 
 so $workman

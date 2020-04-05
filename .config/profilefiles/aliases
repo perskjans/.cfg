@@ -1,4 +1,5 @@
 
+alias e=$EDITOR
 alias vi=$EDITOR
 alias vim=$EDITOR
 
