@@ -9,3 +9,6 @@ super + d
     dmenu_run
 super + t
     toggletray
+
+super + shift + q
+    dmenu_exit

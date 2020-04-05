@@ -24,3 +24,8 @@
         *bash) [ -f $HOME/.bashrc ] && . $HOME/.bashrc ;;
     esac
 ### END: Load rc file for current shell
+
+
+# Start xserver if on tty1 and not already running
+#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/den/null && exec startx
+

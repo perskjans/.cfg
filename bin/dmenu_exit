@@ -1,0 +1,18 @@
+#!/bin/sh
+
+logout_cmd="killall Xorg"
+case "$WINDOWMANAGER" in
+    herbstluftwm) logout_cmd="herbstclient quit" ;;
+esac
+
+options=$(echo -e "Hibernate\nLock\nLogout\nReboot\nShutdown\nSuspend" | dmenu -l 6 -i -p  Run:)
+case "$options" in
+    Hibernate) systemctl hibernate & ;;
+    Lock) i3lock -ec 00ff00 & ;;
+    Logout) $logout_cmd & ;;
+    Reboot) systemctl reboot & ;;
+    Shutdown) systemctl poweroff & ;;
+    Suspend) systemctl suspend & ;;
+esac
+
+exit 0

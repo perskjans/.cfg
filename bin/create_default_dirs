@@ -1,0 +1,14 @@
+#!/bin/sh
+
+
+for dir in /tmp /rep $(grep -o '/.*"$' $HOME/.config/user-dirs.dirs | tr '"\n' ' ')
+do
+    mkdir -p -m 755 $HOME$dir
+done
+
+# Delete dirs created by desktop environments
+for dir in Desktop Documents Downloads Music Pictures Public Templates Videos
+do
+    rm -rf $HOME/$dir
+done
+
