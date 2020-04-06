@@ -455,6 +455,8 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
     nnoremap Œ {zz
 
     " Splits
+    nnoremap gv <C-w>v
+    nnoremap gvv <C-w>s
     nnoremap <leader>v <C-w>v
     nnoremap <leader>vv <C-w>s
 
@@ -468,6 +470,9 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
     nnoremap <C-l> :bn<CR>
     nnoremap <C-h> :bp<CR>
 
+
+    nnoremap <C-j> gj
+    nnoremap <C-k> gk
 
     " === Misc ===
 
