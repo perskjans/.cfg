@@ -55,6 +55,8 @@ endif
 " alternatively, pass a path where plug should install plugins
 call plug#begin($pluginsdir)
 
+Plug 'guns/xterm-color-table.vim'
+
 Plug 'embear/vim-foldsearch'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -186,7 +188,7 @@ set cursorline
 set number
 set relativenumber
 set pastetoggle=<F2>
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 set autoindent  "Retain indentation on next line
 set smartindent "Turn on autoindenting of blocks
 set noautochdir
