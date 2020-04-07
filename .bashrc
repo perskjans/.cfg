@@ -10,7 +10,7 @@ case $- in
 esac
 
 
-export HISTFILE="$XDG_DATA_HOME"/bash/history
+export HISTFILE="$XDG_DATA_HOME/bash/history"
 
 # append to the history file, don't overwrite it
 shopt -s histappend

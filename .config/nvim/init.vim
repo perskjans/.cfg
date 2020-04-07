@@ -1,15 +1,15 @@
 set fileencodings=utf-8
 set encoding=utf-8
 
-let $myvimdir=$HOME . "/.config/nvim"
-let $MYVIMRC=$myvimdir . "/init.vim"
-let $workman=$myvimdir . "/workman.vim"
-let $pluginsdir=$XDG_DATA_HOME . "/vim/plugins"
-let $tmpdir=$XDG_DATA_HOME . "/vim/tmp"
+let $myvimdir = $HOME . "/.config/nvim"
+let $MYVIMRC = $myvimdir . "/init.vim"
+let $workman = $myvimdir . "/workman.vim"
+let $pluginsdir = $XDG_DATA_HOME . "/vim/plugins"
+let $tmpdir = $XDG_DATA_HOME . "/vim/tmp"
 
 set runtimepath+=$myvimdir,$myvimdir"/after"
 
-"let $mycolorfile=$myvimdir . "/colors/perskjans.vim"
+"let $mycolorfile=$myvimdir . '/colors/perskjans.vim'
 
 "=====[ auto reload config if changed ]========
 augroup myvimrc
@@ -18,7 +18,8 @@ augroup myvimrc
         au BufWritePost init.vim so $MYVIMRC
 augroup END
 
-nnoremap <silent> <leader>0 :so $MYVIMRC<cr>
+nnoremap <silent> <leader>0 :mapclear<cr>:so $MYVIMRC<cr>
+autocmd BufWritePost *vim/colors/* so %
 
 " Open vimrc
 nnoremap <F3> :e $MYVIMRC<cr>
@@ -83,10 +84,11 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'ctrlpvim/ctrlp.vim'
-    "let g:ctrlp_map = '<leader>f'
-    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_map = '<leader>f'
+    let g:ctrlp_cmd = 'CtrlPMixed'
     let g:ctrlp_clear_cache_on_exit = 0
-    let g:ctrlp_working_path_mode = 'c'
+    let g:ctrlp_working_path_mode = 'rw'
+    let g:ctrlp_show_hidden = 1
 
 Plug 'xuyuanp/nerdtree-git-plugin'
 
@@ -97,11 +99,11 @@ Plug 'scrooloose/nerdtree'
     let g:NERDTreeDirArrowExpandable = '+'
     let g:NERDTreeDirArrowCollapsible = '-'
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    let NERDTreeHijackNetrw=0
+    let NERDTreeHijackNetrw=1
 
-Plug 'tpope/vim-vinegar'
+"Plug 'tpope/vim-vinegar'
     let g:netrw_home=$tmpdir
-    let g:netrw_banner=0 " Disable annoying banner
+    let g:netrw_banner=1 " Disable annoying banner
     let g:netrw_browser_split=4 " Open in prior window
     let g:netrw_altv=1 " Open splits to the right
     let g:netrw_liststyle=3 " Tree view
@@ -480,6 +482,7 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
 
     inoremap tn <Esc>
     nnoremap <leader>t :NERDTreeToggle<cr>
+    nnoremap <leader>o :e.<cr>
 
     " yank, delete, paste
     "nnoremap <leader>y "+y
@@ -541,7 +544,17 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
 
     " Toggle line numbers
     nnoremap <leader>n :call g:ToggleNuMode()<CR>
-    nnoremap <leader>nn :setlocal number!<cr>
+    nnoremap <leader>nn :call g:ToggleNoNuMode()<cr>
+
+    function! g:ToggleNoNuMode()
+        if(&number == 1)
+            set nonumber
+            set norelativenumber
+        else
+            set number
+            set relativenumber
+        endif
+    endfunc
 
     function! g:ToggleNuMode()
         if(&relativenumber == 1)
@@ -851,3 +864,4 @@ augroup END
 so $workman
 "so $mycolorfile
 color perskjans
+

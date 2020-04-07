@@ -39,7 +39,7 @@ hi Boolean             cterm=NONE    ctermfg=135     ctermbg=NONE   guifg=#af5ff
 hi Character           cterm=NONE    ctermfg=5       ctermbg=NONE   guifg=#800080   guibg=NONE
 hi ColorColumn         cterm=NONE    ctermfg=NONE    ctermbg=235    guifg=NONE      guibg=#262626
 hi Comment             cterm=NONE    ctermfg=59      ctermbg=NONE   guifg=#5f5f5f   guibg=NONE
-hi Conditional         cterm=NONE    ctermfg=4       ctermbg=NONE   guifg=#000080   guibg=NONE
+hi Conditional         cterm=NONE    ctermfg=20      ctermbg=NONE   guifg=#0000df   guibg=NONE
 hi Constant            cterm=NONE    ctermfg=135     ctermbg=NONE   guifg=#af5fff   guibg=NONE
 hi CursorColumn        cterm=NONE    ctermfg=NONE    ctermbg=234    guifg=NONE      guibg=#1c1c1c
 hi Cursor              cterm=NONE    ctermfg=0       ctermbg=10     guifg=#000000   guibg=#00ff00
@@ -61,7 +61,7 @@ hi Function            cterm=NONE    ctermfg=208     ctermbg=NONE   guifg=#ff870
 hi Identifier          cterm=NONE    ctermfg=208     ctermbg=NONE   guifg=#ff8700   guibg=NONE
 hi Ignore              cterm=NONE    ctermfg=8       ctermbg=232    guifg=#808080   guibg=#080808
 hi IncSearch           cterm=NONE    ctermfg=193     ctermbg=0      guifg=#d7ffaf   guibg=#000000
-hi keyword             cterm=NONE    ctermfg=12      ctermbg=NONE   guifg=#0000ff   guibg=NONE
+hi keyword             cterm=NONE    ctermfg=20      ctermbg=NONE   guifg=#0000df   guibg=NONE
 hi Label               cterm=NONE    ctermfg=229     ctermbg=NONE   guifg=#ffffaf   guibg=NONE
 hi LineNr              cterm=NONE    ctermfg=250     ctermbg=NONE   guifg=#bcbcbc   guibg=NONE
 hi Macro               cterm=NONE    ctermfg=13      ctermbg=NONE   guifg=#ff00ff   guibg=NONE
