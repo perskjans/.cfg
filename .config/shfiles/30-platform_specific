@@ -6,9 +6,9 @@ DISTRO_TYPE=unknown
 
 [ -f /etc/arch-release ] && DISTRO_TYPE=arch
 [ -f /etc/redhat-release ] && DISTRO_TYPE=redhat
-[ which apt >/dev/null 2>&1 ] && DISTRO_TYPE=debian
-[ which xbps-install >/dev/null 2>&1 ] && DISTRO_TYPE=void
-[ which zypper >/dev/null 2>&1 ] && DISTRO_TYPE=suse
+[ $(command -v apt) ] && DISTRO_TYPE=debian
+[ $(command -v xbps-install) ] && DISTRO_TYPE=void
+[ $(command -v zypper) ] && DISTRO_TYPE=suse
 
 export DISTRO_TYPE
 
@@ -38,7 +38,7 @@ case $DISTRO_TYPE in
 
     redhat)
         manager=yum
-        [ which dnf >/dev/null 2>&1 ] && manager=dnf
+        [ $(command -v dnf) ] && manager=dnf
 
         alias pm='sudo $manager '
         alias pi='sudo $manager install '

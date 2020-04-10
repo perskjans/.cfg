@@ -10,7 +10,7 @@ case $- in
 esac
 
 
-export HISTFILE="$XDG_DATA_HOME/bash/history"
+export HISTFILE="$HOME/.cache/bash/history"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -39,10 +39,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[ -f ~/.config/profilefiles/exports ] &&. ~/.config/profilefiles/exports
-[ -f ~/.config/profilefiles/platform_specific ] && . ~/.config/profilefiles/platform_specific
-[ -f ~/.config/profilefiles/aliases ] &&. ~/.config/profilefiles/aliases
-[ -f ~/.config/profilefiles/setprompt ] && . ~/.config/profilefiles/setprompt
-[ -d ~/.config/workconfig ] && . ~/.config/workconfig/*
+for f in $HOME/.config/shfiles/*; do . $f; done
 
-neofetch
+[ $(command -v neofetch) ] && neofetch

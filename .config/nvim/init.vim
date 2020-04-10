@@ -4,12 +4,14 @@ set encoding=utf-8
 let $myvimdir = $HOME . "/.config/nvim"
 let $MYVIMRC = $myvimdir . "/init.vim"
 let $workman = $myvimdir . "/workman.vim"
-let $pluginsdir = $XDG_DATA_HOME . "/vim/plugins"
-let $tmpdir = $XDG_DATA_HOME . "/vim/tmp"
+
+let $datadir = $HOME . "/vim"
+let $pluginsdir = $datadir . "/plugins"
+let $tmpdir = $datadir . "/tmp"
 
 set runtimepath+=$myvimdir,$myvimdir"/after"
 
-"let $mycolorfile=$myvimdir . '/colors/perskjans.vim'
+let $mycolorfile=$myvimdir . '/colors/perskjans.vim'
 
 "=====[ auto reload config if changed ]========
 augroup myvimrc
@@ -28,11 +30,11 @@ syntax on
 set backup
 set noswapfile
 
-set undodir=$XDG_DATA_HOME/vim/undo
-set directory=$XDG_DATA_HOME/vim/swap
-set backupdir=$XDG_DATA_HOME/vim/backup
-set viewdir=$XDG_DATA_HOME/vim/view
-set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set directory=$datadir/swap
+set undodir=$datadir/undo
+set backupdir=$datadir/backup
+set viewdir=$datadir/view
+set viminfo+='1000,n$datadir/viminfo
 
 set backupskip=/tmp/*,/private/tmp/*"
 
@@ -441,22 +443,22 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
     "let maplocalleader = "_"
 
 
-    inoremap ï <C-n>
-    inoremap œ <C-p>
+    inoremap ñ <C-n>
+    inoremap é <C-p>
 
     " === Movement ===
     nnoremap <C-j> <C-y> " Scroll down
     nnoremap <C-k> <C-e> " Scroll up
 
-    nnoremap í <C-u> " Half page up
+    nnoremap ú <C-u> " Half page up
+    nnoremap Ú <C-b> " Full page up
     nnoremap ç <C-d> " Half page down
-    nnoremap Í <C-b> " Full page up
     nnoremap Ç <C-f> " Full page down
 
-    nnoremap ï jzz
-    nnoremap œ kzz
-    nnoremap Ï }zz
-    nnoremap Œ {zz
+    nnoremap ñ jzz
+    nnoremap é kzz
+    nnoremap Ñ }zz
+    nnoremap É {zz
 
     " Splits
     nnoremap gv <C-w>v

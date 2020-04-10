@@ -6,7 +6,7 @@ super + b
     chromium
 
 super + d
-    dmenu_run
+    dmenu_run -c -l 30
 super + t
     toggletray
 

@@ -3,34 +3,33 @@
 CommitStatus()
 {
     status=$(git status -u | egrep -io "deleted|conflict|copied|modified|new|renamed|unstage|untracked" | tr [:upper:] [:lower:] | sort | uniq | tr "\n" " ")
-    #git status -s --porcelain | while read -r line; do
     for line in $status
     do
         echo -n " "
         case $line in
         new)
-            echo -en "${FG_YELLOW}N${CO_RESET}"
+            echo -en "${TC_FG_YELLOW}N${TC_RESET}"
         ;;
         untracked)
-            echo -en "${FG_CYAN}U${CO_RESET}"
+            echo -en "${TC_FG_CYAN}U${TC_RESET}"
         ;;
         modified)
-            echo -en "${FG_BLUE}M${CO_RESET}"
+            echo -en "${TC_FG_BLUE}M${TC_RESET}"
         ;;
         deleted)
-            echo -en "${FG_RED}D${CO_RESET}"
+            echo -en "${TC_FG_RED}D${TC_RESET}"
         ;;
         renamed)
-            echo -en "${FG_MAGENTA}R${CO_RESET}"
+            echo -en "${TC_FG_MAGENTA}R${TC_RESET}"
         ;;
         copied)
-            echo -en ", ${FG_MAGENTA}C${CO_RESET}"
+            echo -en ", ${TC_FG_MAGENTA}C${TC_RESET}"
         ;;
         unstage)
-            echo -en "${FG_GREEN}S${CO_RESET}"
+            echo -en "${TC_FG_GREEN}S${TC_RESET}"
         ;;
         conflict)
-            echo -en "${FG_RED}UU${CO_RESET}"
+            echo -en "${TC_FG_RED}UU${TC_RESET}"
         ;;
         *)
             echo "UNKNOWN STATUS"
@@ -57,9 +56,9 @@ GitStatus()
 
         if [ $? -eq 0 ]; then
             if [ -z "$gs_gitstatus" ]; then
-                echo -en "${FG_BLUE}[${CO_RESET}GIT: '$gs_branch' ${FG_GREEN}Up-to-date${CO_RESET}${FG_BLUE}]${CO_RESET}"
+                echo -en "${TC_FG_BLUE}[${TC_RESET}GIT: '$gs_branch' ${TC_FG_GREEN}Up-to-date${TC_RESET}${TC_FG_BLUE}]${TC_RESET}"
             else
-                echo -en "${FG_BLUE}[${CO_RESET}GIT: '$gs_branch'$gs_gitstatus${FG_BLUE}]${CO_RESET}"
+                echo -en "${TC_FG_BLUE}[${TC_RESET}GIT: '$gs_branch'$gs_gitstatus${TC_FG_BLUE}]${TC_RESET}"
             fi
         fi
     fi
