@@ -153,7 +153,7 @@ hc attr theme.active.color $co_window_active_color
 hc attr theme.normal.color $co_window_normal_color
 hc attr theme.urgent.color $co_window_urgent_color
 hc attr theme.inner_width 0
-hc attr theme.border_width 3
+hc attr theme.border_width 4
 
 hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 1
