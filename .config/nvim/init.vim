@@ -2,10 +2,10 @@ set fileencodings=utf-8
 set encoding=utf-8
 
 let $myvimdir = $HOME . "/.config/nvim"
+let $datadir = $HOME . "/.local/share/vim"
+
 let $MYVIMRC = $myvimdir . "/init.vim"
 let $workman = $myvimdir . "/workman.vim"
-
-let $datadir = $HOME . "/vim"
 let $pluginsdir = $datadir . "/plugins"
 let $tmpdir = $datadir . "/tmp"
 
@@ -124,6 +124,7 @@ Plug 'vim-airline/vim-airline'
     let g:airline#extensions#tabline#enabled = 1
     "let g:airline_powerline_fonts = 1
 
+    "
 "Plug 'itchyny/lightline.vim'
 
 "Plug 'msanders/snipmate.vim'
