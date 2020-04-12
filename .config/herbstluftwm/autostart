@@ -1,10 +1,11 @@
 #!/bin/bash
+#vim: filetype=sh
 
 # this is a simple config for herbstluftwm
 
 HERBSTDIR="$HOME/.config/herbstluftwm"
 
-source $HERBSTDIR/colors
+source "$HERBSTDIR/colors"
 
 hc() { herbstclient "$@" ;}
 
@@ -182,4 +183,4 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     "$panel" $monitor &
 done
 
-$HOME/bin/autostart_apps &
+"$HOME/bin/autostart_apps" &

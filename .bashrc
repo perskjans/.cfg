@@ -41,4 +41,4 @@ fi
 
 for f in $HOME/.config/shfiles/*; do . $f; done
 
-[ $(command -v neofetch) ] && neofetch
+#[ $(command -v neofetch) ] && neofetch
