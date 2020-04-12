@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $HOME/.config/herbstluftwm/colors
+
 HC=herbstclient
 
 monitor=${1:-0}
@@ -8,55 +10,28 @@ if [ -z "$geometry" ] ;then
     echo "Invalid monitor $monitor"
     exit 1
 fi
+
 # geometry has the format X Y W H
 x=${geometry[0]}
 y=${geometry[1]}
 panel_width=${geometry[2]}
-#panel_width=3840
-panel_height=40
+
+#if [[ "$(xrdb -query | grep "Xft.dpi" | cut -d' ' -f2)" == "96" ]]; then
+if [[ "${geometry[3]}" == "1080" ]]; then
+    panel_height=20
+    fontSize=13
+else
+    panel_height=40
+    fontSize=13
+fi
+
+#font="Monospace-${fontSize}:antialias=true"
+font="dejavu-${fontSize}:antialias=true"
+fontAwesomeFree="FontAwesome5Free-${fontSize}:style=Solid:antialias=true;1"
+fontAwesomeBrand="FontAwesome5Brand-${fontSize}:style=Solid:antialias=true;1"
 
 $HC pad $monitor $panel_height
 
-dpi=$(xrdb -query | grep Xft.dpi | grep -o "[0-9]*")
-HIGH_DPI=1
-[[ "$dpi" == "96" ]] && HIGH_DPI=0
-
-fonsize=22
-if [ "$DISTRO_TYPE" == "void" ]; then
-    font="-*-fixed-medium-*-*-*-${fontsize}-*-*-*-*-*-*-*"
-else
-    font="-misc-dejavu sans-medium-r-normal--${fontsize}-0-0-0-p-0-iso8859-15"
-fi
-font2="-misc-font awesome 5 free solid-medium-r-normal--0-0-0-0-p-0-iso10646-1"
-font_awsome="-misc-font awesome 5 free regular-medium-r-normal--0-0-0-0-p-0-iso10646-1"
-font="-misc-font awesome 5 free regular-medium-r-normal--0-0-0-0-p-0-iso10646-1"
-
-bgcolor=$($HC get frame_border_normal_color)
-#bgcolor='#101010'
-fgcolor='#efefef'
-selbg=$($HC get window_border_active_color)
-selfg='#101010'
-
-####
-# Try to find textwidth binary.
-# In e.g. Ubuntu, this is named dzen2-textwidth.
-if which textwidth &> /dev/null ; then
-    textwidth="textwidth"
-elif which dzen2-textwidth &> /dev/null ; then
-    textwidth="dzen2-textwidth";
-else
-    echo "This script requires the textwidth tool of the dzen2 project."
-    exit 1
-fi
-####
-# true if we are using the svn version of dzen2
-# depending on version/distribution, this seems to have version strings like
-# "dzen-" or "dzen-x.x.x-svn"
-if dzen2 -v 2>&1 | head -n 1 | grep -q '^dzen-\([^,]*-svn\|\),'; then
-    dzen2_svn="true"
-else
-    dzen2_svn=""
-fi
 
 if awk -Wv 2>/dev/null | head -1 | grep -q '^mawk'; then
     # mawk needs "-W interactive" to line-buffer stdout correctly
@@ -84,7 +59,7 @@ fi
     while true ; do
         # "date" output is checked once a second, but an event is only
         # generated if the output changed compared to the previous run.
-        date +$'date\t%Y-%m-%d, %H:%M:%S'
+        date +$'date\t%V, %a, %d %b %Y %H:%M:%S'
         sleep 1 || break
     done > >( uniq_linebuffered ) &
     childpid=$!
@@ -93,6 +68,8 @@ fi
 } 2>/dev/null |
 
 {
+    bordercolor="#26221C"
+    SEP="|"
 
     IFS=$'\t' read -ra tags <<< "$($HC tag_status $monitor)"
     visible=true
@@ -118,8 +95,7 @@ fi
                 IFS=$'\t' read -ra tags <<< "$($HC tag_status $monitor)"
                 ;;
             date)
-                #echo "resetting date" >&2
-                date="${cmd[@]:1}"
+                DATE_TIME="$SEP ${cmd[@]:1}"
                 ;;
             quit_panel)
                 exit
@@ -132,7 +108,7 @@ fi
                 if [ "${cmd[1]}" = "current" ] && [ "$currentmonidx" -ne "$monitor" ] ; then
                     continue
                 fi
-                echo "^togglehide()"
+                #echo "^togglehide()"
                 if $visible ; then
                     visible=false
                     $HC pad $monitor 0
@@ -151,102 +127,88 @@ fi
             #    ;;
         esac
 
+        WIN_TITLE="$SEP ${windowtitle//^/^^} $SEP"
+
         ### Output ###
         # This part prints dzen data based on the _previous_ data handling run,
         # and then waits for the next event to happen.
 
-        bordercolor="#26221C"
-        SEP="^bg()^fg($selbg)|^fg()"
         # draw tags
         unset TAGS
-        TAGS=''
+        TAGS=' '
+        idx=0
         for i in "${tags[@]}" ; do
+            if [[ $idx -gt 9 ]]; then
+                continue
+            fi
             unset TAG
-            TAG=''
             case ${i:0:1} in
-                '#')
-                    #echo -n "^bg($selbg)^fg($selfg)"
-                    TAG="$TAG^bg($selbg)^fg($selfg)"
+                '#') # the tag is viewed on the specified MONITOR and it is focused.
+                    TAGCOLOR="%{F$co_panel_monitor_focust_fg}%{B$co_panel_monitor_focust_bg}"
                     ;;
-                '+')
-                    #echo -n "^bg(#9CA668)^fg(#141414)"
-                    TAG="$TAG^bg(#9CA668)^fg(#141414)"
+                '+') # the tag is viewed on the specified MONITOR, but this monitor is not focused.
+                    TAGCOLOR="%{B#9CA668}%{F#141414}"
                     ;;
-                ':')
-                    #echo -n "^bg()^fg(#ffffff)"
-                    TAG="$TAG^bg()^fg(#ffffff)"
+                ':') # the tag is not empty
+                    TAGCOLOR="%{B-}%{F$co_panel_occupied_fg}"
                     ;;
-                '!')
-                    #echo -n "^bg(#FF0675)^fg(#141414)"
-                    TAG="$TAG^bg(#FF0675)^fg(#141414)"
+                '!') # the tag contains an urgent window
+                    TAGCOLOR="%{F$co_panel_urgent_fg}%{B$co_panel_urgent_bg}"
                     ;;
-                *)
-                    #echo -n "^bg()^fg(#ababab)"
-                    TAG="$TAG^bg()^fg(#ababab)"
+                '.') # the tag is empty
+                    TAGCOLOR="%{B-}%{F$co_panel_empty_fg}"
+                    ;;
+                '-') # the tag is viewed on a different MONITOR, but this monitor is not focused.
+                    TAGCOLOR="%{B-}%{F$co_panel_other_monitor_unfocust_fg}"
+                    ;;
+                '%') # the tag is viewed on a different MONITOR and it is focused.
+                    TAGCOLOR="%{B-}%{F$co_panel_other_monitor_focust_fg}"
                     ;;
             esac
-            if [ ! -z "$dzen2_svn" ] ; then
-                # clickable tags if using SVN dzen
-                TAG="$TAG^ca(1,\"herbstclient\" focus_monitor \"$monitor\" && \"herbstclient\" use \"${i:1}\") ${i:1} ^ca()"
-            else
-                # non-clickable tags if using older dzen
-                TAG="$TAG ${i:1} "
-            fi
-            TAGS="$TAGS$TAG"
+            TAG="%{A:herbstclient focus_monitor $monitor && herbstclient use ${i:1}:}${i:1}%{A}"
+            #TAG="${i:1}"
+            TAGS="$TAGS$TAGCOLOR$TAG%{F-}%{B-} "
+            idx=$(( $idx + 1 ))
         done
-        echo -n "$TAGS$SEP   ^fg()${windowtitle//^/^^}   $SEP"
+        TAGS="$SEP$TAGS$SEP"
 
 
         #### small adjustments ####
 
         ## Volume
-        volico="VOL"
+        volico='\uf028' #  \uf026
         vol=$(amixer -c 0 get Master | grep -o "[0-9]*%" | head -1)
-        vol="$volico $vol"
+        VOLUME="$volico $vol"
 
         ## Battery
         powerdir=/sys/class/power_supply/
         if [[ $(ls $powerdir/BAT*) ]]; then
             batstat=""
-            for f in /sys/class/power_supply/BAT*/status
+            PWR=""
+            for f in /sys/class/power_supply/BAT[0-9]
             do
-                batstat=$(cat $f)-$batstat
+                batstat=$(cat $f/status)-$batstat
+                pwr=$(cat $f/capacity)
+                if [[ $batstat == *"ischarging"* ]]; then
+                    #   \uf240    \uf241   \uf242    \uf243    \uf244
+                    [[ $pwr -lt 15 ]] && pwrico='%{F#ff0000}\uf244%{F-}'
+                    [[ $pwr -ge 15 ]] && pwrico='\uf243'
+                    [[ $pwr -gt 50 ]] && pwrico='\uf242'
+                    [[ $pwr -gt 75 ]] && pwrico='\uf241'
+                    [[ $pwr -gt 95 ]] && pwrico='\uf240'
+                else
+                    #  \uf0e7
+                    pwrico='\uf0e7'
+                fi
+                PWR="$PWR$pwrico $pwr% "
             done
-            if [[ $batstat == *"ischarging"* ]]; then
-                batico="BAT"
-                batico=
-            else
-                batico="PWR"
-                batico=
-            fi
-            bat=$(cat /sys/class/power_supply/BAT0/capacity)
-            bat="$batico $bat%"
+            PWR="$SEP $PWR"
         fi
 
-        TRAY="^ca(1,\"$HOME/bin/toggletray\") A^ca()"
 
-        right="$SEP $vol $SEP $bat $SEP $date $SEP $TRAY"
+        RIGHT="$SEP $VOLUME $PWR $DATE_TIME $SEP"
 
-        right_unformatted=$(echo -n "$right" | sed "s;\^[^(]*([^)]*);;g")
-
-        # get width of right aligned text.. and add some space..
-        width=$($textwidth "${font}" "$right_unformatted")
-
-        if [[ $HIGH_DPI -eq 1 ]]; then
-            PADDING=$(( $panel_width - (($width / 2) * 3)))
-        else
-            PADDING=$(( $panel_width - (($width / 4) * 3)))
-        fi
-            PADDING=$(( $panel_width - $width ))
-        PADDING=1300
-        echo -n "^pa($PADDING)$right $width"
-        echo
+        echo -en "%{l}$TAGS%{c}$WIN_TITLE%{r}$RIGHT"
 
     done
-
-    ### dzen2 ###
-    # After the data is gathered and processed, the output of the previous block
-    # gets piped to dzen2.
-
-#}
-} 2>/dev/null | dzen2 -x $x -y $y -w $panel_width -h $panel_height -fn "$font" -ta l -bg "$bgcolor" -fg "$fgcolor" -e 'button3=;button4=exec:herbstclient use_index -1;button5=exec:herbstclient use_index +1' &
+}  | lemonbar -g ${panel_width}x${panel_height}+$x+$y -F $co_panel_fg -B $co_panel_bg -f ${font} -f ${fontAwesomeFree}  -f ${fontAwesomeBrand} -p -a 20 | sh

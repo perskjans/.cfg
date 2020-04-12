@@ -13,14 +13,14 @@ export DISTRO_TYPE
 ## Set up aliases for package manager
 case $DISTRO_TYPE in
     arch)
-        alias pm='sudo pacman '
-        alias pi='sudo pacman -S '
-        alias pr='sudo pacman -Rs '
-        alias pc='sudo pacman -Scc '
-        alias pu='sudo pacman -Syu '
-        alias pq='pacman -Q '
-        alias pqr='sudo pacman -Ss'
-        alias prd='pacman -Qdtq | sudo pacman -Rs - '
+        alias pm='yay '
+        alias pi='yay -S '
+        alias pr='yay -Rs '
+        alias pc='yay -Scc '
+        alias pu='yay -Syu '
+        alias pq='yay -Q '
+        alias pqr='yay -Ss'
+        alias prd='yay -Qdtq | yay -Rs - '
     ;;
 
     debian)

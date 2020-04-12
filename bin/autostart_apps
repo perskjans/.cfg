@@ -3,7 +3,7 @@
 for app in dunst nm-applet volumeicon sxhkd
 do
     if [ ! $(which $app >/dev/null 2>&1) ]; then
-        killall $app >/dev/null 2>&1; $app &
+        pkill $app >/dev/null 2>&1; $app &
     fi
 done
 #exec feh --bg-scale ~/pictures/Abinden.jpg
