@@ -1,3 +1,4 @@
+#vim: filetype=sh
 
 # Show the git commit status.
 CommitStatus()

@@ -1,6 +1,4 @@
-###
-### This file is sourced by .profile
-###
+#vim: filetype=sh
 
 DISTRO_TYPE=unknown
 
