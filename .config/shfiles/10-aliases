@@ -31,10 +31,10 @@ alias ll='ls -alhF'
 alias la='ls -Ah'
 alias l='ls -hCF'
 
-alias xresources='. $XDG_CONFIG_HOME/X11/xprofile'
+alias xresources='. $HOME/.config/X11/xprofile'
 
-alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
-alias tx='$HOME/bin/runtmux'
+alias tmux='tmux -f $HOME/.config/tmux/tmux.conf'
+alias tx='$HOME/bin/p_runtmux'
 
 ## Git related aliases
 alias g='git'

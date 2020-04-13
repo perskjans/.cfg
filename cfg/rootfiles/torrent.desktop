@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Torrent
+exec=/usr/bin/env p_add_torrent %u

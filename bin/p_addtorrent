@@ -1,0 +1,8 @@
+#!/bin/sh
+# Script for adding magnet link or torrent file to transmission-daemon.
+# Called from torrent.desktop
+
+pgrep -x transmission-daemon >/dev/null || transmission-daemon
+
+transmission-remote --add "$@" && notify-send "Torrent added: $@"
+
