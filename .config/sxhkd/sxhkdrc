@@ -12,3 +12,18 @@ super + t
 
 super + shift + q
     dmenu_exit
+
+XF86AudioLowerVolume
+    amixer -q -c 0 set Master playback 1dB-
+
+XF86AudioRaiseVolume
+    amixer -q -c 0 set Master playback 1dB+
+
+XF86AudioMute
+    amixer -q -c 0 set Master toggle
+
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+XF86MonBrightnessUp
+    xbacklight -inc 5

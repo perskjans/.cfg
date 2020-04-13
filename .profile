@@ -27,5 +27,4 @@
 
 
 # Start xserver if on tty1 and not already running
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/den/null && exec startx $HOME/.config/X11/xinitrc
-
+#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/den/null && exec startx $HOME/.config/X11/xinitrc

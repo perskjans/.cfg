@@ -444,8 +444,8 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
     "let maplocalleader = "_"
 
 
-    inoremap ñ <C-n>
-    inoremap é <C-p>
+    inoremap ï <C-n>
+    inoremap œ <C-p>
 
     " === Movement ===
     nnoremap <C-j> <C-y> " Scroll down

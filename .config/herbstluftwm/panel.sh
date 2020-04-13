@@ -68,7 +68,6 @@ fi
 } 2>/dev/null |
 
 {
-    bordercolor="#26221C"
     SEP="|"
 
     IFS=$'\t' read -ra tags <<< "$($HC tag_status $monitor)"
@@ -170,7 +169,16 @@ fi
             TAGS="$TAGS$TAGCOLOR$TAG%{F-}%{B-} "
             idx=$(( $idx + 1 ))
         done
-        TAGS="$SEP$TAGS$SEP"
+
+        MODE="$($HC layout | grep FOCUS)"
+        case "$MODE" in 
+            *grid*) MODE="[G]" ;;
+            *horizontal*) MODE="[H]" ;;
+            *max*) MODE="[M]" ;;
+            *vertical*) MODE="[V]" ;;
+        esac
+
+        TAGS="$SEP$TAGS$SEP $MODE"
 
 
         #### small adjustments ####

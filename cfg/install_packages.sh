@@ -4,8 +4,6 @@ packages_to_install()
 {
     case $DISTRO_TYPE in
     arch)
-        #echo lightdm
-        #echo lightdm-gtk-greeter
         echo alsa-utils
         echo arandr
         echo automake
@@ -17,10 +15,7 @@ packages_to_install()
         echo fossil
         echo gcc
         echo herbstluftwm
-        echo jshon
         echo libnotify
-        echo lxappearance
-        #echo lxappearance-obconf
         echo make
         echo neovim
         echo network-manager-applet
