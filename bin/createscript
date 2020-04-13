@@ -1,6 +1,0 @@
-#!/bin/sh
-
-script=$HOME/bin/"$1"
-
-echo "#!/bin/sh" > $script
-chmod +x $script

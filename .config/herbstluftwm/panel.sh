@@ -184,8 +184,9 @@ fi
         #### small adjustments ####
 
         ## Volume
-        volico='\uf028' #  \uf026
-        vol=$(amixer -c 0 get Master | grep -o "[0-9]*%" | head -1)
+        [[ $(pulsemixer --get-mute) -eq 1 ]] && volico='%{F#ff0000}\uf028%{F-}' || volico='\uf028'
+        #vol=$(amixer -c 0 get Master | grep -o "[0-9]*%" | head -1)
+        vol=$(pulsemixer --get-volume | cut -d' ' -f1)
         VOLUME="$volico $vol"
 
         ## Battery

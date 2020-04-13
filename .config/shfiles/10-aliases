@@ -58,6 +58,7 @@ alias glg4="g log --reverse --abbrev-commit --decorate --format=format:'%C(bold 
 
 alias cg='g --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
 alias cga='cg add'
+alias cgA='cga $(cgs -s | sed "s|^.*\ ||g")'
 alias cgd='cg diff --color=auto'
 alias cgs='cg status'
 alias cgci='cg commit'
