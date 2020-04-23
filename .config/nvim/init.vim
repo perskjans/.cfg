@@ -62,9 +62,13 @@ Plug 'guns/xterm-color-table.vim'
 
 Plug 'embear/vim-foldsearch'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
+Plug 'lilydjwg/colorizer'
+
+"Plug 'chrisbra/Colorizer'
+
+"Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
     let g:Hexokinase_highlighters = ['backgroundfull']
     let g:Hexokinase_refreshEvents = ['InsertLeave']
     let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'hsl', 'hsla', 'colour_names']
@@ -431,10 +435,8 @@ nnoremap <silent> <leader>5 :wincmd =<cr>
 
     " === Misc ===
 
-    "noremap ; :
-    "nnoremap : ,
-    "nnoremap , ;
-    "nnoremap ' "
+    noremap ; :
+    nnoremap : ;
 
 " END ---------------------------------------------------------------------- }}}}}}
 
