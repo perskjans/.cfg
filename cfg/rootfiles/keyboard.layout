@@ -46,7 +46,7 @@ xkb_symbols "altgr-intl" {
     key <AB02> {    [ x,             X,                oe,                    OE                   ]    };
     key <AB03> {    [ c,             C,                copyright,             cent                 ]    };
     key <AB04> {    [ v,             V,                registered,            registered           ]    };
-    key <AB05> {    [ b,             B,                semicolon,             comma                ]    };
+    key <AB05> {    [ b,             B,                colon,                 comma                ]    };
     key <AB06> {    [ n,             N,                ntilde,                Ntilde               ]    };
     key <AB07> {    [ m,             M,                mu,                    mu                   ]    };
     key <AB08> {    [ comma,         less,             ccedilla,              Ccedilla             ]    };
@@ -86,7 +86,7 @@ xkb_symbols "workman-altgr-intl" {
     key <AD02> {    [ d,             D,                eth,                   ETH                  ]    };
     key <AD03> {    [ r,             R,                registered,            registered           ]    };
     key <AD04> {    [ w,             W,                iacute,                Iacute               ]    };
-    key <AD05> {    [ b,             B,                semicolon,             comma                ]    };
+    key <AD05> {    [ b,             B,                colon,                 comma                ]    };
     key <AD06> {    [ y,             Y,                udiaeresis,            Udiaeresis           ]    };
     key <AD07> {    [ f,             F,                aring,                 Aring                ]    };
     key <AD08> {    [ u,             U,                adiaeresis,            Adiaeresis           ]    };
