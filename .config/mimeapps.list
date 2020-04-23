@@ -1,3 +1,4 @@
-[Default Applications]
-x-scheme-handler/magnet=torrent.desktop
-application/x-bittorrent=torrent.desktop
+[Added Associations]
+x-scheme-handler/magnet=torrent.desktop;
+application/x-bittorrent=torrent.desktop;
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Torrent
+Exec=/usr/bin/env p_torrent_add %u
+
+[Added Associations]
+Type=Application
+Name=Torrent
+Exec=/usr/bin/env p_torrent_add %u
