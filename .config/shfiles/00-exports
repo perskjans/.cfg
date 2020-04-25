@@ -60,9 +60,12 @@ export XDG_PICTURES_DIR="$HOME/pic"
 export XDG_VIDEOS_DIR="$HOME/vid"
 
 mkdir -p $XDG_DATA_HOME/fonts
-mkdir -p $XDG_DATA_HOME/vim/{undo,swap,backup}
 
-export VIMINIT="source $XDG_CONFIG_HOME/nvim/init.vim"
+export P_VIMHOMEDIR=$HOME/.config/nvim
+export P_VIMDATADIR=$HOME/.local/share/vim
+export VIMINIT="source $P_VIMHOMEDIR/init.vim"
+mkdir -p $P_VIMDATADIR/{undo,swap,backup,view}
+
 
 
 [ $(command -v nvim) ] && export EDITOR=nvim || export EDITOR=vim
