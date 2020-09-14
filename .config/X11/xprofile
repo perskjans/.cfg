@@ -1,8 +1,11 @@
 [ -f $XDG_CONFIG_HOME/X11/xresources ] && xrdb -merge $XDG_CONFIG_HOME/X11/xresources
 [ -f $XDG_CONFIG_HOME/xoverrides ] && xrdb -merge $XDG_CONFIG_HOME/xoverrides
 
+setxkbmap -option caps:ctrl_modifier  # change caps lock to ctrl
+
 #setxkbmap -model pc105 -layout us -variant altgr-intl
 #setxkbmap -model pc105 -layout us,us -variant altgr-intl,workman-intl -option grp:shifts_toggle
-setxkbmap -model pc105 -layout custom,custom -variant altgr-intl,workman-altgr-intl -option grp:shifts_toggle
+setxkbmap -model pc105 -layout custom,custom -variant workman-altgr-intl,altgr-intl -option grp:shifts_toggle
+#setxkbmap -model pc105 -layout custom -variant workman-altgr-intl
 
 

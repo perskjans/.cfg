@@ -18,45 +18,48 @@ xkb_symbols "altgr-intl" {
     key <AE12> {    [ equal,         plus,             multiply,              division             ]    };
 
     key <AD01> {    [ q,             Q,                uacute,                Uacute               ]    };
-    key <AD02> {    [ w,             W,                iacute,                Iacute               ]    };
-    key <AD03> {    [ e,             E,                eacute,                Eacute               ]    };
-    key <AD04> {    [ r,             R,                ediaeresis,            Ediaeresis           ]    };
-    key <AD05> {    [ t,             T,                thorn,                 THORN                ]    };
+    key <AD02> {    [ w,             W,                eth,                   ETH                  ]    };
+    key <AD03> {    [ e,             E,                registered,            registered           ]    };
+    key <AD04> {    [ r,             R,                Home,                  leftdoublequotemark  ]    };
+    key <AD05> {    [ t,             T,                End,                   rightdoublequotemark ]    };
     key <AD06> {    [ y,             Y,                udiaeresis,            Udiaeresis           ]    };
     key <AD07> {    [ u,             U,                aring,                 Aring                ]    };
     key <AD08> {    [ i,             I,                adiaeresis,            Adiaeresis           ]    };
     key <AD09> {    [ o,             O,                odiaeresis,            Odiaeresis           ]    };
-    key <AD10> {    [ p,             P,                oacute,                Oacute               ]    };
+    key <AD10> {    [ p,             P,                paragraph,             degree               ]    };
     key <AD11> {    [ bracketleft,   braceleft,        guillemotleft,         leftdoublequotemark  ]    };
     key <AD12> {    [ bracketright,  braceright,       guillemotright,        rightdoublequotemark ]    };
 
     key <AC01> {    [ a,             A,                aacute,                Aacute               ]    };
     key <AC02> {    [ s,             S,                ssharp,                section              ]    };
-    key <AC03> {    [ d,             D,                eth,                   ETH                  ]    };
-    key <AC04> {    [ f,             F,                f,                     F                    ]    };
-    key <AC05> {    [ g,             G,                BackSpace,             BackSpace            ]    };
-    key <AC06> {    [ h,             H,                Escape,                Escape               ]    };
-    key <AC07> {    [ j,             J,                iacute,                Iacute               ]    };
-    key <AC08> {    [ k,             K,                oe,                    OE                   ]    };
-    key <AC09> {    [ l,             L,                oslash,                Ooblique             ]    };
-    key <AC10> {    [ semicolon,     colon,            paragraph,             degree               ]    };
+    key <AC03> {    [ d,             D,                Left,                  Up                   ]    };
+    key <AC04> {    [ f,             F,                Right,                 Down                 ]    };
+    key <AC05> {    [ g,             G,                thorn,                 THORN                ]    };
+    key <AC06> {    [ h,             H,                oe,                    OE                   ]    };
+    key <AC07> {    [ j,             J,                ntilde,                Ntilde               ]    };
+    key <AC08> {    [ k,             K,                eacute,                Eacute               ]    };
+    key <AC09> {    [ l,             L,                oacute,                Oacute               ]    };
+    key <AC10> {    [ semicolon,     colon,            iacute,                Iacute               ]    };
     key <AC11> {    [ apostrophe,    quotedbl,         dead_acute,            dead_diaeresis       ]    };
 
     key <AB01> {    [ z,             Z,                ae,                    AE                   ]    };
     key <AB02> {    [ x,             X,                oe,                    OE                   ]    };
-    key <AB03> {    [ c,             C,                copyright,             cent                 ]    };
-    key <AB04> {    [ v,             V,                registered,            registered           ]    };
-    key <AB05> {    [ b,             B,                colon,                 comma                ]    };
-    key <AB06> {    [ n,             N,                ntilde,                Ntilde               ]    };
-    key <AB07> {    [ m,             M,                mu,                    mu                   ]    };
+    key <AB03> {    [ c,             C,                mu,                    mu                   ]    };
+    key <AB04> {    [ v,             V,                copyright,             cent                 ]    };
+    key <AB05> {    [ b,             B,                registered,            registered           ]    };
+    key <AB06> {    [ n,             N,                idiaeresis,            Idiaeresis           ]    };
+    key <AB07> {    [ m,             M,                oslash,                Ooblique             ]    };
     key <AB08> {    [ comma,         less,             ccedilla,              Ccedilla             ]    };
     key <AB09> {    [ period,        greater,          dead_abovedot,         dead_caron           ]    };
     key <AB10> {    [ slash,         question,         questiondown,          dead_hook            ]    };
     key <BKSL> {    [ backslash,     bar,              notsign,               brokenbar            ]    };
 
+
     key <LSGT> {    [ less,          greater,          backslash,             bar                  ]    };
-    key <CAPS> {    [ Escape,        BackSpace,        Delete,                Caps_Lock            ]    };
-    key <RTRN> {    [ Return,        Return,           Escape,                Escape               ]    };
+    key <ESC> {    [ Escape,        Caps_Lock,        Delete,                Caps_Lock            ]    };
+    key <RTRN> {    [ Return,        BackSpace,           Escape,             Escape               ]    };
+    key <PRSC> {    [ Shift_L,       Shift_L,             Print,              Escape               ]    };
+//    key <CAPS> {    [ Escape,        BackSpace,        Delete,                Caps_Lock            ]    };
 
     include "level3(ralt_switch)"
 };
@@ -85,8 +88,8 @@ xkb_symbols "workman-altgr-intl" {
     key <AD01> {    [ q,             Q,                uacute,                Uacute               ]    };
     key <AD02> {    [ d,             D,                eth,                   ETH                  ]    };
     key <AD03> {    [ r,             R,                registered,            registered           ]    };
-    key <AD04> {    [ w,             W,                iacute,                Iacute               ]    };
-    key <AD05> {    [ b,             B,                colon,                 comma                ]    };
+    key <AD04> {    [ w,             W,                Home,                  leftdoublequotemark  ]    };
+    key <AD05> {    [ b,             B,                End,                   rightdoublequotemark ]    };
     key <AD06> {    [ y,             Y,                udiaeresis,            Udiaeresis           ]    };
     key <AD07> {    [ f,             F,                aring,                 Aring                ]    };
     key <AD08> {    [ u,             U,                adiaeresis,            Adiaeresis           ]    };
@@ -94,12 +97,11 @@ xkb_symbols "workman-altgr-intl" {
     key <AD10> {    [ semicolon,     colon,            paragraph,             degree               ]    };
     key <AD11> {    [ bracketleft,   braceleft,        guillemotleft,         leftdoublequotemark  ]    };
     key <AD12> {    [ bracketright,  braceright,       guillemotright,        rightdoublequotemark ]    };
-
     key <AC01> {    [ a,             A,                aacute,                Aacute               ]    };
     key <AC02> {    [ s,             S,                ssharp,                section              ]    };
-    key <AC03> {    [ h,             H,                Escape,                Escape               ]    };
-    key <AC04> {    [ t,             T,                thorn,                 THORN                ]    };
-    key <AC05> {    [ g,             G,                BackSpace,             BackSpace            ]    };
+    key <AC03> {    [ h,             H,                Left,                  Up                   ]    };
+    key <AC04> {    [ t,             T,                Right,                 Down                 ]    };
+    key <AC05> {    [ g,             G,                thorn,                 THORN                ]    };
     key <AC06> {    [ k,             K,                oe,                    OE                   ]    };
     key <AC07> {    [ n,             N,                ntilde,                Ntilde               ]    };
     key <AC08> {    [ e,             E,                eacute,                Eacute               ]    };
@@ -120,9 +122,10 @@ xkb_symbols "workman-altgr-intl" {
     key <BKSL> {    [ backslash,     bar,              notsign,               brokenbar            ]    };
 
     key <LSGT> {    [ less,          greater,          backslash,             bar                  ]    };
-    key <CAPS> {    [ Escape,        BackSpace,        Delete,                Caps_Lock            ]    };
-    key <RTRN> {    [ Return,        Return,           Escape,                Escape               ]    };
-
+    key <ESC> {    [ Escape,        Caps_Lock,        Delete,                Caps_Lock            ]    };
+    key <RTRN> {    [ Return,        BackSpace,           Escape,             Escape               ]    };
+    key <PRSC> {    [ Shift_L,       Shift_L,             Print,              Escape               ]    };
+//    key <CAPS> {    [ Escape,        BackSpace,        Delete,                Caps_Lock            ]    };
 
     include "level3(ralt_switch)"
 };

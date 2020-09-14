@@ -1,7 +1,6 @@
 #vim: filetype=sh
 
 alias e=$EDITOR
-alias v=$EDITOR
 alias vi=$EDITOR
 alias vim=$EDITOR
 
@@ -83,4 +82,7 @@ alias gpa='gitutils pullall'
 
 alias gsetupstream='g push --set-upstream origin $(g branch | grep "\*" | cut -d" " -f2)'
 alias gdeleteupstream='g push --delete origin $(g branch | grep "\*" | cut -d" " -f2)'
+
+alias gdirset='export GIT_DIR=$HOME/.cfg.git/; export GIT_WORK_TREE=$HOME'
+alias gdirunset='unset GIT_DIR; unset GIT_WORK_TREE'
 

@@ -61,15 +61,13 @@ export XDG_VIDEOS_DIR="$HOME/vid"
 
 mkdir -p $XDG_DATA_HOME/fonts
 
-export P_VIMHOMEDIR=$HOME/.config/nvim
-export P_VIMDATADIR=$HOME/.local/share/vim
-export VIMINIT="source $P_VIMHOMEDIR/init.vim"
-mkdir -p $P_VIMDATADIR/{undo,swap,backup,view}
+export VIMDIR=$HOME/.config/vim
+export VIMINIT="source $VIMDIR/init.vim"
 
 
-
-[ $(command -v nvim) ] && export EDITOR=nvim || export EDITOR=vim
 [ $(command -v st) ] && export TERMINAL=st || export TERMINAL=xterm
+[ $(command -v nvim) ] && export EDITOR=nvim || export EDITOR=vim
+
 export BROWSER=chromium
 
 # colored GCC warnings and errors

@@ -21,7 +21,7 @@ Mod=Mod4   # Use the super key as the main modifier
 
 #hc keybind $Mod-Shift-q spawn dmenu_exit
 hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-c close
+hc keybind $Mod-x close
 #hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
 
 # basic movement
@@ -109,45 +109,45 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 #### VISUAL SETTINGS ####
 
-# theme
-xsetroot -solid $co_root
+    # theme
+    xsetroot -solid $co_root
 
-hc set always_show_frame 1
-hc set frame_bg_transparent 1
-hc set frame_transparent_width 1
+    hc set always_show_frame 1
+    hc set frame_bg_transparent 1
+    hc set frame_transparent_width 1
 
-hc set smart_frame_surroundings 15
-hc set frame_border_width 2
+    hc set smart_frame_surroundings 15
+    hc set frame_border_width 2
 
-hc set frame_border_active_color $co_frame_border_active_color
-hc set frame_border_normal_color "$co_frame_border_normal_color"
+    hc set frame_border_active_color $co_frame_border_active_color
+    hc set frame_border_normal_color "$co_frame_border_normal_color"
 
-hc set frame_bg_normal_color $co_root
-hc set frame_bg_active_color $co_root
+    hc set frame_bg_normal_color $co_root
+    hc set frame_bg_active_color $co_root
 
-hc set frame_gap 5
-hc set frame_padding 0
+    hc set frame_gap 5
+    hc set frame_padding 0
 
-hc set window_gap 3
-hc set smart_window_surroundings 0
-hc set mouse_recenter_gap 0
+    hc set window_gap 3
+    hc set smart_window_surroundings 0
+    hc set mouse_recenter_gap 0
 
-hc attr theme.tiling.reset 1
-hc attr theme.floating.reset 1
-hc attr theme.active.color $co_window_active_color
-hc attr theme.normal.color $co_window_normal_color
-hc attr theme.urgent.color $co_window_urgent_color
-hc attr theme.inner_width 0
-hc attr theme.border_width 4
+    hc attr theme.tiling.reset 1
+    hc attr theme.floating.reset 1
+    hc attr theme.active.color $co_window_active_color
+    hc attr theme.normal.color $co_window_normal_color
+    hc attr theme.urgent.color $co_window_urgent_color
+    hc attr theme.inner_width 0
+    hc attr theme.border_width 4
 
-hc attr theme.floating.border_width 4
-hc attr theme.floating.outer_width 1
-hc attr theme.floating.outer_color black
+    hc attr theme.floating.border_width 4
+    hc attr theme.floating.outer_width 1
+    hc attr theme.floating.outer_color black
 
-hc set tree_style '╾│ ├└╼─┐'
+    hc set tree_style '╾│ ├└╼─┐'
 
-# unlock, just to be sure
-hc unlock
+    # unlock, just to be sure
+    hc unlock
 
 
 

@@ -8,6 +8,8 @@
 # In case everything goes wrong, we at least fall back to a plain xterm
 #
 export WINDOWMANAGER=herbstluftwm
+#export WINDOWMANAGER=qtile
+#export WINDOWMANAGER=spectrwm
 
 failsafe="xterm -ls -T Failsafe -geometry 80x24-0-0"
 trap "exec $failsafe" EXIT SIGHUP SIGINT SIGPIPE SIGTERM SIGIO

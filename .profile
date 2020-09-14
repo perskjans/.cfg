@@ -5,7 +5,6 @@
 
 ### END: general
 
-
 ### START: Load rc file for current shell
     case $SHELL in
         *bash) [ -f $HOME/.bashrc ] && . $HOME/.bashrc ;;
