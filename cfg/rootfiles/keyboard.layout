@@ -56,9 +56,10 @@ xkb_symbols "altgr-intl" {
 
 
     key <LSGT> {    [ less,          greater,          backslash,             bar                  ]    };
-    key <ESC> {    [ Escape,        Caps_Lock,        Delete,                Caps_Lock            ]    };
+    key <ESC> {     [ Escape,        Caps_Lock,        Delete,                Caps_Lock            ]    };
     key <RTRN> {    [ Return,        BackSpace,           Escape,             Escape               ]    };
     key <PRSC> {    [ Shift_L,       Shift_L,             Print,              Escape               ]    };
+    key <SPCE> {    [ Space,         Space,            Escape,                Caps_Lock            ]    };
 //    key <CAPS> {    [ Escape,        BackSpace,        Delete,                Caps_Lock            ]    };
 
     include "level3(ralt_switch)"
@@ -122,9 +123,10 @@ xkb_symbols "workman-altgr-intl" {
     key <BKSL> {    [ backslash,     bar,              notsign,               brokenbar            ]    };
 
     key <LSGT> {    [ less,          greater,          backslash,             bar                  ]    };
-    key <ESC> {    [ Escape,        Caps_Lock,        Delete,                Caps_Lock            ]    };
-    key <RTRN> {    [ Return,        BackSpace,           Escape,             Escape               ]    };
-    key <PRSC> {    [ Shift_L,       Shift_L,             Print,              Escape               ]    };
+    key <ESC> {     [ Escape,        Caps_Lock,        Delete,                Caps_Lock            ]    };
+    key <RTRN> {    [ Return,        BackSpace,        Escape,                Escape               ]    };
+    key <PRSC> {    [ Shift_L,       Shift_L,          Print,                 Escape               ]    };
+    key <SPCE> {    [ Space,         Space,            Escape,                Caps_Lock            ]    };
 //    key <CAPS> {    [ Escape,        BackSpace,        Delete,                Caps_Lock            ]    };
 
     include "level3(ralt_switch)"
