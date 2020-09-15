@@ -55,9 +55,9 @@ alias glg2="g log --reverse --abbrev-commit --decorate --date=relative --format=
 alias glg3="g log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 alias glg4="g log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 
-alias gcl='gitutils clone'
-alias gfa='gitutils findall'
-alias gpa='gitutils pullall'
+alias gcl='p_gitutils clone'
+alias gfa='p_gitutils findall'
+alias gpa='p_gitutils pullall'
 
 alias gsetupstream='g push --set-upstream origin $(g branch | grep "\*" | cut -d" " -f2)'
 alias gdeleteupstream='g push --delete origin $(g branch | grep "\*" | cut -d" " -f2)'

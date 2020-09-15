@@ -1,6 +1,5 @@
 #!/bin/sh
 
-. ~/.config/profilefiles/ansicolor
 reposfile=~/.cache/gitrepos.dat
 
 repostatus()
@@ -36,11 +35,11 @@ clone()
     exit_code=$?
 
     if [ "$exit_code" != "0" ]; then
-        echo -e ${FG_RED}${result}${CO_RESET}
+        echo -e ${TC_FG_RED}${result}${CO_RESET}
         exit $exit_code
     fi
 
-    echo -e ${FG_GREEN}${result}${CO_RESET}
+    echo -e ${TC_FG_GREEN}${result}${CO_RESET}
     dir=$(echo $result | cut -d"'" -f2)
     echo $(pwd)/$dir >> $reposfile
 
@@ -68,7 +67,7 @@ pullall()
 
         if [ ! $result =~ "up to date" ] && [ ! $result =~ "up-to-date" ]; then
             echo $dir
-            echo -e "${FG_CYAN}${result}${CO_RESET}"
+            echo -e "${TC_FG_CYAN}${result}${CO_RESET}"
             echo
         fi
 
