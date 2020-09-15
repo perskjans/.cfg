@@ -2,6 +2,8 @@
 
     stty -ixon # Disable ctrl-s and ctrl-q
 
+    # Load dircolors for ls
+    test -r ~/.config/dircolors && eval "$(dircolors -b ~/.config/dircolors)"
 
 ### END: general
 
