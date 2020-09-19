@@ -168,4 +168,4 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
 done
 
 
-$HOME/bin/p_autostart_apps &
+#$HOME/bin/p_run_startup_apps &
