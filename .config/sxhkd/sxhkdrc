@@ -7,7 +7,11 @@ super + b
 
 super + d
     dmenu_run -c -l 30
-super + t
+
+super + alt + m
+    dmenu_run -c -l 30
+
+super + alt + t
     p_toggletray
 
 super + shift + q
