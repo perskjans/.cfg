@@ -20,6 +20,18 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias startx='startx $XDG_CONFIG_HOME/X11/xinitrc'
+alias sx='startx'
+
+
+# Use Vim to read man pages
+vman() {
+    if [ $# -eq 0 ]; then
+        /usr/bin/man
+    elif whatis $* ; then
+        /usr/bin/man $* | col -b | vim -c 'set ft=man nomod nolist' -
+    fi
+}
+alias man='vman'
 
 alias pl='. $HOME/.profile'
 
