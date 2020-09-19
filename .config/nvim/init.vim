@@ -845,8 +845,9 @@ endif
 
     augroup applications_reload_on_config_change
         au!
-        au BufWritePost */herbstluftwm/* silent !herbstclient reload " Reload Herbstluwftwm
-        au BufWritePost */sxhkdrc silent !p_sxhkd_reload & " Restart sxhkd
+        au BufWritePost */herbstluftwm/* silent !herbstclient reload
+        "au BufWritePost */sxhkdrc execute '!$HOME/bin/p_sxhkd_reload'
+        au BufWritePost */sxhkdrc silent execute '!pkill sxhkd; sxhkd &'
         augroup END
 
 
