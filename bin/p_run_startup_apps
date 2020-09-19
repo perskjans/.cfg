@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#for app in dunst nm-applet volumeicon sxhkd
+#do
+#    if [ ! $(which $app >/dev/null 2>&1) ]; then
+#        pkill $app >/dev/null 2>&1; $app &
+#    fi
+#done
+#exec feh --bg-scale ~/pictures/Abinden.jpg
+
+
+for cmd in \
+    'dunst' \
+    'nm-applet' \
+    'sxhkd' \
+    'unclutter -idle 1' \
+    'volumeicon'
+do
+    set $cmd
+    app=$1
+    if [ ! $(which $app >/dev/null 2>&1) ]; then
+        echo pkill $app >/dev/null 2>&1; echo $cmd
+        pkill $app >/dev/null 2>&1; $cmd &
+    fi
+done
