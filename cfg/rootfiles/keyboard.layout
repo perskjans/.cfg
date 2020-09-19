@@ -19,9 +19,9 @@ xkb_symbols "altgr-intl" {
 
     key <AD01> {    [ q,             Q,                uacute,                Uacute               ]    };
     key <AD02> {    [ w,             W,                eth,                   ETH                  ]    };
-    key <AD03> {    [ e,             E,                registered,            registered           ]    };
-    key <AD04> {    [ r,             R,                Home,                  leftdoublequotemark  ]    };
-    key <AD05> {    [ t,             T,                End,                   rightdoublequotemark ]    };
+    key <AD03> {    [ e,             E,                Up,                    Page_Up              ]    };
+    key <AD04> {    [ r,             R,                asciicircum,           registered           ]    };
+    key <AD05> {    [ t,             T,                ssharp,                section              ]    };
     key <AD06> {    [ y,             Y,                udiaeresis,            Udiaeresis           ]    };
     key <AD07> {    [ u,             U,                aring,                 Aring                ]    };
     key <AD08> {    [ i,             I,                adiaeresis,            Adiaeresis           ]    };
@@ -31,9 +31,9 @@ xkb_symbols "altgr-intl" {
     key <AD12> {    [ bracketright,  braceright,       guillemotright,        rightdoublequotemark ]    };
 
     key <AC01> {    [ a,             A,                aacute,                Aacute               ]    };
-    key <AC02> {    [ s,             S,                ssharp,                section              ]    };
-    key <AC03> {    [ d,             D,                Left,                  Up                   ]    };
-    key <AC04> {    [ f,             F,                Right,                 Down                 ]    };
+    key <AC02> {    [ s,             S,                Left,                  Home                 ]    };
+    key <AC03> {    [ d,             D,                Down,                  Page_Down            ]    };
+    key <AC04> {    [ f,             F,                Right,                 End                  ]    };
     key <AC05> {    [ g,             G,                thorn,                 THORN                ]    };
     key <AC06> {    [ h,             H,                oe,                    OE                   ]    };
     key <AC07> {    [ j,             J,                ntilde,                Ntilde               ]    };
@@ -88,9 +88,9 @@ xkb_symbols "workman-altgr-intl" {
 
     key <AD01> {    [ q,             Q,                uacute,                Uacute               ]    };
     key <AD02> {    [ d,             D,                eth,                   ETH                  ]    };
-    key <AD03> {    [ r,             R,                registered,            registered           ]    };
-    key <AD04> {    [ w,             W,                Home,                  leftdoublequotemark  ]    };
-    key <AD05> {    [ b,             B,                End,                   rightdoublequotemark ]    };
+    key <AD03> {    [ r,             R,                Up,                    Page_Up              ]    };
+    key <AD04> {    [ w,             W,                asciicircum,           registered           ]    };
+    key <AD05> {    [ b,             B,                ssharp,                section              ]    };
     key <AD06> {    [ y,             Y,                udiaeresis,            Udiaeresis           ]    };
     key <AD07> {    [ f,             F,                aring,                 Aring                ]    };
     key <AD08> {    [ u,             U,                adiaeresis,            Adiaeresis           ]    };
@@ -98,10 +98,11 @@ xkb_symbols "workman-altgr-intl" {
     key <AD10> {    [ semicolon,     colon,            paragraph,             degree               ]    };
     key <AD11> {    [ bracketleft,   braceleft,        guillemotleft,         leftdoublequotemark  ]    };
     key <AD12> {    [ bracketright,  braceright,       guillemotright,        rightdoublequotemark ]    };
+
     key <AC01> {    [ a,             A,                aacute,                Aacute               ]    };
-    key <AC02> {    [ s,             S,                ssharp,                section              ]    };
-    key <AC03> {    [ h,             H,                Left,                  Up                   ]    };
-    key <AC04> {    [ t,             T,                Right,                 Down                 ]    };
+    key <AC02> {    [ s,             S,                Left,                  Home                 ]    };
+    key <AC03> {    [ h,             H,                Down,                  Page_Down            ]    };
+    key <AC04> {    [ t,             T,                Right,                 End                  ]    };
     key <AC05> {    [ g,             G,                thorn,                 THORN                ]    };
     key <AC06> {    [ k,             K,                oe,                    OE                   ]    };
     key <AC07> {    [ n,             N,                ntilde,                Ntilde               ]    };
@@ -124,7 +125,7 @@ xkb_symbols "workman-altgr-intl" {
 
     key <LSGT> {    [ less,          greater,          backslash,             bar                  ]    };
     key <ESC> {     [ Escape,        Caps_Lock,        Delete,                Caps_Lock            ]    };
-    key <RTRN> {    [ Return,        BackSpace,        Escape,                Escape               ]    };
+    key <RTRN> {    [ Return,        BackSpace,        Delete,                Escape               ]    };
     key <PRSC> {    [ Shift_L,       Shift_L,          Print,                 Escape               ]    };
     key <SPCE> {    [ Space,         Space,            Escape,                Caps_Lock            ]    };
 //    key <CAPS> {    [ Escape,        BackSpace,        Delete,                Caps_Lock            ]    };
