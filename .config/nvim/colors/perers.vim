@@ -86,8 +86,6 @@ hi SpecialComment   cterm=NONE    ctermfg=245     ctermbg=NONE   guifg=#8a8a8a  
 hi Special          cterm=NONE    ctermfg=74      ctermbg=NONE   guifg=#5fafd7   guibg=NONE
 hi Statement        cterm=NONE    ctermfg=3       ctermbg=NONE   guifg=#808000   guibg=NONE
 hi SpecialKey       cterm=NONE    ctermfg=81      ctermbg=NONE   guifg=#5fd7ff   guibg=NONE
-hi StatusLine       cterm=NONE    ctermfg=238     ctermbg=253    guifg=#444444   guibg=#dadada
-hi StatusLineNC     cterm=NONE    ctermfg=8       ctermbg=232    guifg=#808080   guibg=#080808
 hi StorageClass     cterm=NONE    ctermfg=208     ctermbg=NONE   guifg=#ff8700   guibg=NONE
 hi String           cterm=NONE    ctermfg=34      ctermbg=NONE   guifg=#00af00   guibg=NONE
 hi Structure        cterm=NONE    ctermfg=63      ctermbg=NONE   guifg=#5f5fff   guibg=NONE
@@ -109,3 +107,22 @@ if has("spell")
     hi SpellLocal   cterm=NONE    ctermfg=NONE    ctermbg=17     guifg=NONE      guibg=#00005f
     hi SpellRare    cterm=NONE    ctermfg=NONE    ctermbg=NONE   guifg=NONE      guibg=NONE
 endif
+
+"hi link EndOfBuffer ColorColumn
+
+" StatusLine related
+    hi StatusLine       cterm=NONE    ctermfg=238     ctermbg=253    guifg=#444444   guibg=#dadada
+    hi StatusLineNC     cterm=NONE    ctermfg=8       ctermbg=232    guifg=#808080   guibg=#080808
+
+    highlight User1     cterm=None    ctermfg=NONE    ctermbg=52     guifg=NONE      guibg=#5f0000
+    highlight User2     cterm=None    ctermfg=blue    ctermbg=red    guifg=blue      guibg=red
+    highlight User3     cterm=None    ctermfg=green   ctermbg=blue   guifg=green     guibg=blue
+    highlight User4     cterm=None    ctermfg=red     ctermbg=green  guifg=red       guibg=green
+    highlight User5     cterm=None    ctermfg=blue    ctermbg=red    guifg=blue      guibg=red
+    highlight User6     cterm=None    ctermfg=green   ctermbg=blue   guifg=green     guibg=blue
+    highlight User7     cterm=None    ctermfg=red     ctermbg=green  guifg=red       guibg=green
+    highlight User8     cterm=None    ctermfg=blue    ctermbg=red    guifg=blue      guibg=red
+    highlight User9     cterm=None    ctermfg=green   ctermbg=blue   guifg=green     guibg=blue
+
+
+
