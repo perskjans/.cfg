@@ -487,8 +487,8 @@ endif
             nnoremap <silent> <leader>0 :mapclear<cr>:imapclear<cr>:so $MYVIMRC<cr>
 
             " Insert blank lines before, after
-                nnoremap <leader><cr> O<ESC><DOWN>
-                nnoremap <leader><leader><cr> o<Esc><UP>
+                nnoremap <leader><cr> mzO<ESC>`z
+                nnoremap <leader><cr><cr> mzo<Esc>`z
 
         " Localleader
             " Toggle search highlight
