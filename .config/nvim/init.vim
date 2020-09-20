@@ -486,6 +486,10 @@ endif
             " Clear mappings and reload config
             nnoremap <silent> <leader>0 :mapclear<cr>:imapclear<cr>:so $MYVIMRC<cr>
 
+            " Insert blank lines before, after
+                nnoremap <leader><cr> O<ESC><DOWN>
+                nnoremap <leader><leader><cr> o<Esc><UP>
+
         " Localleader
             " Toggle search highlight
             nnoremap <silent> <localleader>h :set hlsearch! hlsearch?<CR>
@@ -754,13 +758,9 @@ endif
             nnoremap <silent> <F6>  :make!<cr><cr><cr>:cw<cr><cr>
 
         " Quickfix
-            "nnoremap <silent> <left>  :cp<cr>
-            "nnoremap <silent> <right>  :cn<cr>
+            nnoremap <silent> <F7>  :cp<cr>
+            nnoremap <silent> <F8>  :cn<cr>
             nnoremap <silent> <F9> :call perers#functions#toggle_quicktfix_window()<cr>
-
-        " Insert blank lines before, after
-            nnoremap <cr> O<ESC><DOWN>
-            nnoremap <A-cr> o<Esc><UP>
 
 
         " Reselect last-pasted text
