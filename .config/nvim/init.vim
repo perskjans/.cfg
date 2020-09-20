@@ -48,6 +48,8 @@ endif
         Plug 'guns/xterm-color-table.vim'
 
         Plug 'mcchrish/nnn.vim'
+            " Show dotfiles and open in type-to-nav mode
+            let g:nnn#command = 'nnn -H -n'
 
         "Plug 'embear/vim-foldsearch'
 
