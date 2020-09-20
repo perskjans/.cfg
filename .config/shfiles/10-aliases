@@ -33,7 +33,7 @@ vman() {
 }
 alias man='vman'
 
-alias n='nnn'
+alias n='nnn -H -n'
 
 alias pl='. $HOME/.profile'
 
