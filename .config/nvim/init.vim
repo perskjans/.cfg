@@ -64,6 +64,8 @@ endif
         "Plug 'lilydjwg/colorizer'
 
         "Plug 'yggdroot/indentline'
+            let g:indentLine_char = '|'
+            let g:indentLine_noConcealCursor=""
 
         "Plug 'easymotion/vim-easymotion'
 
@@ -71,8 +73,9 @@ endif
 
         "Plug 'leafgarland/typescript-vim'
 
-        "Plug 'elzr/vim-json'
-        "    "let g:vim_json_syntax_conceal = 0
+        Plug 'Dreiparrent/vim-json'
+            let g:vim_json_syntax_conceal = 0
+            let g:vim_json_syntax_concealcursor = 0
 
         "Plug 'frazrepo/vim-rainbow'
         "    let g:rainbow_active = 1
@@ -121,10 +124,11 @@ endif
 
         "Plug 'rhysd/vim-clang-format'
 
-        "Plug 'andviro/flake8-vim'
-        "    let g:PyFlakeOnWrite = 1
-        "    let g:PyFlakeCheckers = 'pep8'
-        "    let g:PyFlakeAggressive = 0
+        Plug 'andviro/flake8-vim'
+            let g:PyFlakeOnWrite = 1
+            let g:PyFlakeCheckers = 'pep8'
+            let g:PyFlakeAggressive = 0
+            let g:PyFlakeDisabledMessages = 'E262,E265,E402,E501'
 
         ""Plug 'klen/python-mode'
         "    "map <Leader>g :call RopeGotoDefinition()<CR>
