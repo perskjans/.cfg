@@ -21,7 +21,8 @@ promptcmd()
         userco=$TC_FG_RED
     fi
 
-    export PS1="\n#${TC_FG_BLUE}[${exitcolor}${exitstatus}${TC_RESET}${TC_FG_BLUE}][${TC_RESET}\$(date +%H:%M)${TC_FG_BLUE}]${TC_RESET}${TC_FG_BLUE}[${userco}\u${TC_RESET}@${userco}\h${TC_RESET}: ${TC_FG_YELLOW}\w${TC_FG_BLUE}]${TC_RESET}\${gitstatus}\n#\$ "
+    DATE=$(date +%H:%M)
+    export PS1="\n#${TC_FG_BLUE}[${exitcolor}${exitstatus}${TC_RESET}${TC_FG_BLUE}][${TC_RESET}$DATE${TC_FG_BLUE}]${TC_RESET}${TC_FG_BLUE}[${userco}\u${TC_RESET}@${userco}\h${TC_RESET}: ${TC_FG_YELLOW}\w${TC_FG_BLUE}]${TC_RESET}\${gitstatus}\n#\$ "
 }
 export PROMPT_COMMAND=promptcmd
 
