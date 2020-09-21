@@ -85,5 +85,5 @@ GitBranch()
     echo $branch
 }
 
-alias gsetupstream='g push --set-upstream origin $(gGitBranch)'
-alias gdeleteupstream='g push --delete origin $(GitBranchj)'
+alias gsetupstream='g push --set-upstream origin $(GitBranch)'
+alias gdeleteupstream='g push --delete origin $(GitBranch)'
