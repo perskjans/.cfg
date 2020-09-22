@@ -57,7 +57,7 @@ case $DISTRO_TYPE in
         alias pq='sudo zypper pa | grep "i+" '
         alias pdu='sudo zyper dup '
         alias pqr='sudo zyper se '
-        alias prd='sudo zyper rm --clean-deps '
+        alias prd='sudo zyper rm --clean-deps $(sudo $manager | grep "^i" | cut -d'|' -f3)'
     ;;
 
     void)
