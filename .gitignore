@@ -1,7 +1,9 @@
 .cache/
 .cfg.git/
 .config/Clementine/
+.config/QtProject.conf
 .config/Thunar/
+.config/VirtualBox/
 .config/chromium/
 .config/coc/
 .config/configstore/
@@ -10,6 +12,7 @@
 .config/gtk-3.0/
 .config/htop/
 .config/libfm/
+.config/libvirt/
 .config/menus/
 .config/mimeinfo.cache
 .config/neofetch/
@@ -33,6 +36,7 @@
 doc/
 dsk/
 dwn/
+msc/
 mus/
 pic/
 pub/

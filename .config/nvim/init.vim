@@ -49,7 +49,7 @@ endif
 
         Plug 'mcchrish/nnn.vim'
             " Show dotfiles and open in type-to-nav mode
-            let g:nnn#command = 'nnn -H -n'
+            let g:nnn#command = 'nnn -H'
 
         "Plug 'embear/vim-foldsearch'
 
@@ -297,9 +297,9 @@ endif
 
         set path+=**
 
-        set scrolloff=3                       " start scrolling 3 lines before edge of viewport
+        set scrolloff=5                       " start scrolling 3 lines before edge of viewport
         set sidescroll=0                      " sidescroll in jumps because terminals are slow
-        set sidescrolloff=3                   " same as scrolloff, but for columns
+        set sidescrolloff=5                   " same as scrolloff, but for columns
         set shell=$SHELL                      " shell to use for `!`, `:!`, `system()` etc.
         set shortmess+=A                      " ignore annoying swapfile messages
         set shortmess+=I                      " no splash screen
@@ -453,6 +453,8 @@ endif
 
 " MAPPINGS ===
     " Command mode
+        cnoremap fn find
+
         " Add sudo to write
         cnoremap w!! w !sudo tee % >/dev/null
 
@@ -761,12 +763,12 @@ endif
             nnoremap vaa VGo1G
 
         " Run make
-            nnoremap <silent> <F6>  :make!<cr><cr><cr>:cw<cr><cr>
+            nnoremap <silent> <F7>  :make!<cr><cr><cr>:cw<cr><cr>
 
         " Quickfix
-            nnoremap <silent> <F7>  :cp<cr>
-            nnoremap <silent> <F8>  :cn<cr>
-            nnoremap <silent> <F9> :call perers#functions#toggle_quicktfix_window()<cr>
+            nnoremap <silent> <F8>  :cp<cr>
+            nnoremap <silent> <F9>  :cn<cr>
+            nnoremap <silent> <F10> :call perers#functions#toggle_quicktfix_window()<cr>
 
 
         " Reselect last-pasted text
@@ -852,11 +854,13 @@ endif
     augroup applications_reload_on_config_change
         au!
         au BufWritePost */herbstluftwm/* silent !herbstclient reload
-        "au BufWritePost */sxhkdrc execute '!$HOME/bin/p_sxhkd_reload'
         au BufWritePost */sxhkdrc silent execute '!pkill sxhkd; sxhkd &'
         augroup END
 
-
+    augroup quickfix
+        au!
+        au BufReadPost quickfix let g:qfix_win = 1
+        augroup END
 
 color perers
 

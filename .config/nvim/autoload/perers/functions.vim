@@ -40,8 +40,8 @@
             cclose
             unlet g:qfix_win
         else
-            copen 20
-            let g:qfix_win = bufnr("$")
+            let g:qfix_win = 1
+            copen
         endif
     endfunction
 

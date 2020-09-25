@@ -16,6 +16,7 @@ packages_to_install()
         echo herbstluftwm
         echo jshon
         echo libnotify
+        echo libvirt
         echo make
         echo mpv
         echo neovim
@@ -31,6 +32,7 @@ packages_to_install()
         echo pavucontrol
         echo pulseadio
         echo pulsemixer
+        echo qemu
         echo sxhkd
         echo tmux
         echo transmission-cli
@@ -40,6 +42,7 @@ packages_to_install()
         echo ttf-liberation
         echo ttf-linux-libertine
         echo unzip
+        echo virt-manager
         echo volumeicon
         echo wget
         echo xbacklight
