@@ -53,14 +53,18 @@ alias g='git'
 alias ga='g add'
 alias gA='ga $(gs -s | sed "s|^.*\ ||g")'
 alias gd='g diff --color=auto'
-alias gs='g status'
-alias gci='g commit'
 alias gbr='g branch'
 alias gchp='g cherry-pick'
+alias gci='g commit'
 alias gco='g checkout'
+alias gls='g ls-tree --full-tree --name-only -rt HEAD'
 alias gme='g merge'
 alias gps='g push'
 alias gpu='g pull'
+alias grs='g restore --staged'
+alias gs='g status'
+alias gsm='g submodule'
+
 alias glgf='g log -p --'
 alias glgg="g log --graph --oneline --decorate --all"
 alias glg1="g log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s - %an%C(bold yellow)%d%C(reset)' --all"
@@ -69,10 +73,11 @@ alias glg2="g log --reverse --abbrev-commit --decorate --date=relative --format=
 alias glg3="g log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 alias glg4="g log --reverse --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%s - %an' --all"
 
-alias gls='g ls-tree --full-tree --name-only -rt HEAD'
 alias gcl='p_gitutils clone'
 alias gfa='p_gitutils findall'
 alias gpa='p_gitutils pullall'
+alias gsa='p_gitutils submoduleadd'
+alias gsr='p_gitutils submodulerm'
 
 alias gdirset='export GIT_DIR=$HOME/.cfg.git/; export GIT_WORK_TREE=$HOME'
 alias gdirunset='unset GIT_DIR; unset GIT_WORK_TREE'

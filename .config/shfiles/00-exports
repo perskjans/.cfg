@@ -1,6 +1,12 @@
 #vim: filetype=sh
 
-PATH=$HOME/.workbin:$HOME/bin:$PATH
+path=$HOME/.workbin:$HOME/bin
+for d in $HOME/bin/*
+do
+    [ -d $d ] && path=$path:$d
+done
+
+PATH=$path:$PATH
 export PATH
 
 #export LC_ALL=en_IN.UTF-8
