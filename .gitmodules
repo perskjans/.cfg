@@ -10,3 +10,6 @@
 [submodule "lemonbar-xft"]
 	path = app/lemonbar-xft
 	url = ../lemonbar-xft
+[submodule "dwm"]
+	path = app/dwm
+	url = ../dwm
