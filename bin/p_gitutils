@@ -86,4 +86,28 @@ pullall()
     done
 }
 
+submoduleadd()
+{
+    local destdir=$1; shift
+    local url=$1; shift
+    local args="$*"
+    local name=${url##.*/}
+    local path=$destdir/$name
+
+    echo Running: git submodule add --name $name $args "$url" $path
+    git submodule add --name $name $3 "$url" $path
+}
+
+submodulerm()
+{
+    local destdir=$1; shift
+    local args="$*"
+
+    echo Running: git submodule deinit "$args" $destdir
+    git submodule deinit "$args" $destdir
+    echo Running: git rm $destdir "$args"
+    git rm $destdir "$args"
+}
+
+
 $*

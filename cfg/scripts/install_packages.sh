@@ -34,6 +34,7 @@ packages_to_install()
         echo pulsemixer
         echo qemu
         echo sxhkd
+        echo sysstat
         echo tmux
         echo transmission-cli
         echo trayer

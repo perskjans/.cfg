@@ -9,7 +9,7 @@ super + d
     dmenu_run -c -l 30
 
 super + alt + m
-    dmenu_run -c -l 30
+    p_dmenu_unicode
 
 super + alt + t
     p_toggletray

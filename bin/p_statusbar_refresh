@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pkill -P $(pgrep p_statusbar$) sleep

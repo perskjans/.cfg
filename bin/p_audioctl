@@ -8,3 +8,5 @@ case ${1} in
     up) pulsemixer --change-volume +$delta ;;
     down) pulsemixer --change-volume -$delta ;;
 esac
+
+~/bin/p_statusbar_refresh
