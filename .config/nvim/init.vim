@@ -703,9 +703,8 @@ endif
 
 
         " Move between open buffers
-            nnoremap <A-h> :bp<CR>
-            nnoremap <A-l> :bn<CR>
-            nnoremap <A-o> :bn<CR>
+            nnoremap <C-h> :bp<CR>
+            nnoremap <C-l> :bn<CR>
 
         " Movement
             nnoremap ä <C-u> " Half page up
