@@ -465,7 +465,7 @@ endif
     " Leader mappings
         " Set leader keys. Default <leader> is \ (backslash)
             let mapleader="\<space>"
-            let maplocalleader=","
+            let maplocalleader="\\"
 
         " Leader
             " save, exit
@@ -694,9 +694,8 @@ endif
             nnoremap ó :e .<cr>
 
         " Next/previous match for t/f
-            nnoremap \ ,
-            nnoremap å ,
-            nnoremap ö ;
+            nnoremap _ ,
+            nnoremap - ;
 
         " No Q
             nnoremap Q gq
