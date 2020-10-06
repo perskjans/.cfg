@@ -51,11 +51,9 @@ print_bat()
 {
     ## Battery
     powerdir=/sys/class/power_supply/
-    #if [ $(ls $powerdir/BAT*) ]; then
     if [ -e $powerdir/BAT0 ]; then
         sep=$SEP
         PWR=""
-        #batstat=$(cat /sys/class/power_supply/BAT0/status)
         for f in /sys/class/power_supply/BAT[0-9]
         do
             BATNAME=$(cat $f/*/name)
@@ -74,8 +72,8 @@ print_bat()
             PWR="$PWR$pwrico $pwr% "
 
             # If capacity is lower than 5% send notification
-            if [ $pwr -lt 5 ]; then
-                dunstify -u Critical "$BATNAME $pwr%"
+            if [ "$BATNAME" == "BAT0"] && [ $pwr -lt 5 ]; then
+                dunstify -u Critical "BATTERY: $pwr%"
             fi
         done
         echo -n "$SEP $PWR"
