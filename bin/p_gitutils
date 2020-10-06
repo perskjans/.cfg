@@ -103,10 +103,10 @@ submodulerm()
     local destdir=$1; shift
     local args="$*"
 
-    echo Running: git submodule deinit "$args" $destdir
-    git submodule deinit "$args" $destdir
-    echo Running: git rm $destdir "$args"
-    git rm $destdir "$args"
+    echo Running: git submodule deinit $args $destdir
+    git submodule deinit $args $destdir
+    echo Running: git rm $destdir $args
+    git rm $destdir $args
 }
 
 
