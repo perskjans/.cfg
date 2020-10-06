@@ -22,6 +22,8 @@ fi
 alias startx='startx $XDG_CONFIG_HOME/X11/xinitrc'
 alias sx='startx'
 
+alias workmanset='export p_kb_workman=1; xresources'
+alias workmanunset='unset p_kb_workman; xresources'
 
 # Use Vim to read man pages
 vman() {
