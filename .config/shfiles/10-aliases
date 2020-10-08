@@ -79,6 +79,7 @@ alias gfa='p_gitutils findall'
 alias gpa='p_gitutils pullall'
 alias gsa='p_gitutils submoduleadd'
 alias gsr='p_gitutils submodulerm'
+alias gsd='p_gitutils submoduledeinit'
 
 alias gdirset='export GIT_DIR=$HOME/.cfg.git/; export GIT_WORK_TREE=$HOME'
 alias gdirunset='unset GIT_DIR; unset GIT_WORK_TREE'

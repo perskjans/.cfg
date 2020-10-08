@@ -98,6 +98,16 @@ submoduleadd()
     git submodule add --name $name $3 "$url" $path
 }
 
+submoduledeinit()
+{
+    local destdir=$1; shift
+    local args="$*"
+
+    echo Running: git submodule deinit $args $destdir
+    git submodule deinit $args $destdir
+    rm -rf $destdir
+}
+
 submodulerm()
 {
     local destdir=$1; shift
