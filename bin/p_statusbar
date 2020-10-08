@@ -71,8 +71,8 @@ print_bat()
             fi
             PWR="$PWR$pwrico $pwr% "
 
-            # If capacity is lower than 5% send notification
-            if [ $BATNAME = "BAT0" ] && [ $pwr -lt 5 ]; then
+            # If capacity is lower than 10% send notification
+            if [ $BATNAME = "BAT0" ] && [ $pwr -lt 10 ]; then
                 dunstify -u Critical "BATTERY: $pwr%"
             fi
         done
