@@ -9,6 +9,7 @@ case $- in
       *) return;;
 esac
 
+set -o vi
 
 export HISTFILE="$HOME/.cache/bash/history"
 
