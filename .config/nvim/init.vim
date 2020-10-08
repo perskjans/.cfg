@@ -826,10 +826,10 @@ endif
         au BufEnter  *       endif
         augroup END
 
-    augroup save_folds_leaving_buffer
+    augroup save_load_folds_leaving_buffer
         au!
-        au BufWinLeave *.* silent mkview
-        au BufWinEnter *.* silent loadview
+        au BufWinLeave *,*.* silent mkview
+        au BufWinEnter *,*.* silent! loadview
         augroup end
 
     augroup show_cursorline
