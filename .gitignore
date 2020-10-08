@@ -33,6 +33,7 @@
 .mozilla/
 .pki/
 .ssh/
+app/*/
 doc/
 dsk/
 dwn/
