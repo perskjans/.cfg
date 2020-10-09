@@ -19,7 +19,7 @@ endif
 silent execute "!mkdir -m 777 -p " . shellescape(expand($VIMTMP)) . "/{swap,undo,backup,view}"
 
 if !exists('SCRATCHFILE')
-    let $SCRATCHFILE = $VIMDIR . "/tmp/scratch.txt"     " Scratchfile for tmp usage
+    let $SCRATCHFILE = $VIMTMP . "/scratch.txt"     " Scratchfile for tmp usage
 endif
 
 let $PLUGINSDIR = $VIMDIR . "/pack/plugins/start"
@@ -102,7 +102,7 @@ endif
             "let NERDTreeHijackNetrw=1
 
         "Plug 'tpope/vim-vinegar'
-            let g:netrw_home=$VIMDIR . '/tmp'
+            let g:netrw_home=$VIMTMP
         "    let g:netrw_banner=1 " Disable annoying banner
             let g:netrw_browser_split=4 " Open in prior window
             let g:netrw_altv=1 " Open splits to the right
@@ -220,18 +220,24 @@ endif
             set backupdir=$VIMTMP/backup//
             set viewdir=$VIMTMP/view//
 
+            if has('viminfo') " ie. Vim.
+                let s:viminfo='viminfo'
+            elseif has('shada') " ie. Neovim.
+                let s:viminfo='shada'
+            endif
 
-            "           +--Disable hlsearch while loading viminfo
-            "           | +--Remember marks for last 500 files
-            "           | |    +--Remember up to 10000 lines in each register
-            "           | |    |      +--Remember up to 1MB in each register
-            "           | |    |      |     +--Remember last 1000 search patterns
-            "           | |    |      |     |     +---Remember last 1000 commands
-            "           | |    |      |     |     |     +---Create viminfo file here
-            "           | |    |      |     |     |     |
-            "           | |    |      |     |     |     |
-            "           v v    v      v     v     v     v
-            set viminfo+=h,'500,<10000,s1000,/1000,:1000,n$VIMDIR/tmp/viminfo
+            "                              +--Disable hlsearch while loading viminfo
+            "                              | +--Remember marks for last 500 files
+            "                              | |    +--Remember up to 10000 lines in each register
+            "                              | |    |      +--Remember up to 1MB in each register
+            "                              | |    |      |     +--Remember last 1000 search patterns
+            "                              | |    |      |     |     +---Remember last 1000 commands
+            "                              | |    |      |     |     |     +---Create viminfo file here
+            "                              | |    |      |     |     |     |
+            "                              | |    |      |     |     |     |
+            "                              v v    v      v     v     v     v
+            execute 'set ' . s:viminfo . "=h,'500,<10000,s1000,/1000,:1000,n" . $VIMTMP . "/" . s:viminfo
+
         endif
 
         set noswapfile  " Never use swap files
