@@ -206,38 +206,41 @@ endif
 
 " SETTINGS ===
     " Backup, view, undo, swap
-        if exists('$SUDO_USER')
-            set nobackup                        " don't create root-owned files
-            set nowritebackup                   " don't create root-owned files
-            set viminfo=
-        else
-            set backup
-            set undofile
-            set backupskip=/tmp/*,/private/tmp/*"
+        if has('viminfo') " ie. Vim.
+            let s:viminfo='viminfo'
+        elseif has('shada') " ie. Neovim.
+            let s:viminfo='shada'
+        endif
 
-            set directory=$VIMTMP/swap//
-            set undodir=$VIMTMP/undo//
-            set backupdir=$VIMTMP/backup//
-            set viewdir=$VIMTMP/view//
+        if exists('s:viminfo')
+            if exists('$SUDO_USER')
+                set nobackup                        " don't create root-owned files
+                set nowritebackup                   " don't create root-owned files
+                set viminfo=
+                execute 'set ' . s:viminfo . "="
+            else
+                set backup
+                set undofile
+                set backupskip=/tmp/*,/private/tmp/*"
 
-            if has('viminfo') " ie. Vim.
-                let s:viminfo='viminfo'
-            elseif has('shada') " ie. Neovim.
-                let s:viminfo='shada'
+                set directory=$VIMTMP/swap//
+                set undodir=$VIMTMP/undo//
+                set backupdir=$VIMTMP/backup//
+                set viewdir=$VIMTMP/view//
+
+
+                "                              +--Disable hlsearch while loading viminfo
+                "                              | +--Remember marks for last 500 files
+                "                              | |    +--Remember up to 10000 lines in each register
+                "                              | |    |      +--Remember up to 1MB in each register
+                "                              | |    |      |     +--Remember last 1000 search patterns
+                "                              | |    |      |     |     +---Remember last 1000 commands
+                "                              | |    |      |     |     |     +---Create viminfo file here
+                "                              | |    |      |     |     |     |
+                "                              | |    |      |     |     |     |
+                "                              v v    v      v     v     v     v
+                execute 'set ' . s:viminfo . "=h,'500,<10000,s1000,/1000,:1000,n" . $VIMTMP . "/" . s:viminfo
             endif
-
-            "                              +--Disable hlsearch while loading viminfo
-            "                              | +--Remember marks for last 500 files
-            "                              | |    +--Remember up to 10000 lines in each register
-            "                              | |    |      +--Remember up to 1MB in each register
-            "                              | |    |      |     +--Remember last 1000 search patterns
-            "                              | |    |      |     |     +---Remember last 1000 commands
-            "                              | |    |      |     |     |     +---Create viminfo file here
-            "                              | |    |      |     |     |     |
-            "                              | |    |      |     |     |     |
-            "                              v v    v      v     v     v     v
-            execute 'set ' . s:viminfo . "=h,'500,<10000,s1000,/1000,:1000,n" . $VIMTMP . "/" . s:viminfo
-
         endif
 
         set noswapfile  " Never use swap files
@@ -996,43 +999,6 @@ color perers
     "
     "        set updatecount=80                    " update swapfiles every 80 typed chars
     "        set updatetime=2000                   " CursorHold interval
-    "
-    "        if has('viminfo') " ie. Vim.
-    "            let s:viminfo='viminfo'
-    "        elseif has('shada') " ie. Neovim.
-    "            let s:viminfo='shada'
-    "        endif
-    "
-    "        if exists('s:viminfo')
-    "            if exists('$SUDO_USER')
-    "                " Don't create root-owned files.
-    "                execute 'set ' . s:viminfo . '='
-    "            else
-    "                " Defaults:
-    "                "   Neovim: !,'100,<50,s10,h
-    "                "   Vim:    '100,<50,s10,h
-    "                "
-    "                " - ! save/restore global variables (only all-uppercase variables)
-    "                " - '100 save/restore marks from last 100 files
-    "                " - <50 save/restore 50 lines from each register
-    "                " - s10 max item size 10KB
-    "                " - h do not save/restore 'hlsearch' setting
-    "                "
-    "                " Our overrides:
-    "                " - '0 store marks for 0 files
-    "                " - <0 don't save registers
-    "                " - f0 don't store file marks
-    "                " - n: store in ~/.vim/tmp
-    "                "
-    "                execute 'set ' . s:viminfo . "='0,<0,f0,n~/.vim/tmp/" . s:viminfo
-    "
-    "                if !empty(glob('~/.vim/tmp/' . s:viminfo))
-    "                if !filereadable(expand('~/.vim/tmp/' . s:viminfo))
-    "                    echoerr 'warning: ~/.vim/tmp/' . s:viminfo . ' exists but is not readable'
-    "                endif
-    "                endif
-    "            endif
-    "        endif
     "
     "        if has('mksession')
     "            set viewdir=~/.vim/tmp/view         " override ~/.vim/view default
