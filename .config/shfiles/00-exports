@@ -1,6 +1,6 @@
 #vim: filetype=sh
 
-path=$HOME/.workbin:$HOME/bin
+path=$HOME/.work/bin:$HOME/bin
 for d in $HOME/bin/*
 do
     [ -d $d ] && path=$path:$d

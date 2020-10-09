@@ -9,9 +9,8 @@ case $- in
       *) return;;
 esac
 
+# Set Vi key bindings
 set -o vi
-
-export HISTFILE="$HOME/.cache/bash/history"
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -21,6 +20,8 @@ shopt -s autocd # Allows you to cd into directory merely by typing the directory
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+export HISTFILE="$HOME/.cache/bash/history"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -48,4 +49,5 @@ fi
 
 for f in $HOME/.config/shfiles/*; do . $f; done
 
-#[ $(command -v neofetch) ] && neofetch
+# source work specific files
+for f in $HOME/.work/config/*; do . $f; done
