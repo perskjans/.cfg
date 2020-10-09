@@ -50,4 +50,4 @@ fi
 for f in $HOME/.config/shfiles/*; do . $f; done
 
 # source work specific files
-for f in $HOME/.work/config/*; do . $f; done
+[ -d $HOME/.work/config ] && for f in $HOME/.work/config/*; do . $f; done
